@@ -1,4 +1,5 @@
 Joseph Mulray
 CS350
-4/8/17
+4/20/17
 
+Included makefile to compile and run, just run make. Also used the standart main class given on blackboard. Had to change some minute things in that class but for the most part is the same. Two files for the lab the main.java (the original main from blackboard) and the driver AlarmClock.java.

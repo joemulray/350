@@ -1,3 +1,7 @@
+#Joseph Mulray
+#CS 350 L1
+#4/20/17
+
 JC = javac
 JAVA = java
 VIEWER = more
@@ -10,8 +14,12 @@ MAIN = main
 .PHONY : run view clean
 
 run : 
+	$(JC) $(FILES)
+	$(JAVA) $(MAIN)
+	
 
 view : $(FILES)
+	$(VIEWER) README
 	$(VIEWER) $(FILES)
 
 clean : 

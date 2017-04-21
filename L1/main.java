@@ -8,43 +8,46 @@ public class main {
 
     AlarmClock myClock = new AlarmClock(8, 0, 0, "AM", 8, 5, "AM");
 
+    //set alarm clock to 96.5
+    myClock.setStation("96.5 WIRED");
 
-    for (int i = 0; i < 5; i++)
+    for (i = 0; i < 5; i++)
 
       {
 
-        System.out.println("Time: " + myClock.showTime());
 
-        for (int seconds = 0; seconds < 60; seconds++)
+        for (seconds = 0; seconds < 60; seconds++)
 
         {
 
+         myClock.tick();
          myClock.checkAlarm();
 
-         myClock.tick();
-
         }
+
+        System.out.println("Time: " + myClock.showTime());
 
       }
 
     myClock.snooze();
 
+    //set station to Q120;
+    myClock.setStation("Q102");
 
     for (i = 0; i < 9; i++)
 
     {
 
-      System.out.println("Time: " + myClock.showTime());
-
-      for (int seconds = 0; seconds < 60; seconds++)
+      for (seconds = 0; seconds < 60; seconds++)
 
       {
 
+        myClock.tick();
         myClock.checkAlarm();
 
-        myClock.tick();
-
       }
+
+      System.out.println("Time: " + myClock.showTime());
 
     }
 
