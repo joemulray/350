@@ -17,8 +17,8 @@ FILES = AnswerSheet.java \
 	Start.java \
 	Survey.java \
 	Test.java \
-	TF.java
-
+	TF.java \
+	Main.java
 	
 
 MAIN = Survey.jar

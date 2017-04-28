@@ -1,2 +1,2 @@
-Main-Class: Start
+Main-Class: Main
 

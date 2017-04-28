@@ -26,14 +26,20 @@ public class Start {
      */
     public void menu() {
         // TODO implement here
-	
-	System.out.println("1) Survey\n2) Test");
+
+	String choice; 
+	Scanner keyboard = new Scanner(System.in);
 		
+	System.out.println("1) Survey\n2) Test");
+			
+
 	System.out.println("1) Create a new survey");
 	System.out.println("2) Display a Survey");
 	System.out.println("3) Load a Survey");
 	System.out.println("4) Save a Survey");
 	System.out.println("5) Quit");
+
+	
 
 	System.out.println("1) Create a new Test");
 	System.out.println("2) Display a new Test");
@@ -108,10 +114,5 @@ public class Start {
         // TODO implement here
     }
 
-   public static void main(String[] args){
-
-		Start start = new Start();
-		start.menu();
-	}
 
 }
