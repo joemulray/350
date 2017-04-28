@@ -4,7 +4,7 @@ import java.util.*;
 /**
  * 
  */
-public class Question {
+public abstract class Question {
 
     /**
      * Default constructor

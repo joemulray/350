@@ -27,14 +27,13 @@ MAIN = Survey.jar
 .PHONY: run view clean
 
 run:
-	$(JC) $(FILES)
-	$(JAR) -$(FLAGS) $(MAIN) Manifest.txt *.class
+	@$(JC) $(FILES)
+	@$(JAR) -$(FLAGS) $(MAIN) Manifest.txt *.class
 	$(JAVA) -$(JAR) $(MAIN)
 
 
 view:
-	$(VIEWER) README
-	$(VIEWER) $(FILES)
+	$(VIEWER) README $(FILES)
 
 clean:
 	-rm *.class $(MAIN)
