@@ -3,3 +3,6 @@ CS 350
 April 28 2017
 
 Makefile included just run make, will create jar file and execute program for you.
+TODO:
+	Get rid of AnswerSheet Class, can just make a object of answers and call it AnswerSheet.
+

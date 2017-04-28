@@ -27,9 +27,19 @@ public class Start {
     public void menu() {
         // TODO implement here
 	
-	//	
 	System.out.println("1) Survey\n2) Test");
 		
+	System.out.println("1) Create a new survey");
+	System.out.println("2) Display a Survey");
+	System.out.println("3) Load a Survey");
+	System.out.println("4) Save a Survey");
+	System.out.println("5) Quit");
+
+	System.out.println("1) Create a new Test");
+	System.out.println("2) Display a new Test");
+	System.out.println("3) Load a Test");
+	System.out.println("4) Save a Test");
+	System.out.println("5) Quit");
 	
 	System.out.println("1) Add a new T/F question");
 	System.out.println("2) Add a new multiple choice");
@@ -37,7 +47,6 @@ public class Start {
 	System.out.println("4) Add a new essay question");
 	System.out.println("5) Add a new ranking question");
 	System.out.println("6) Add a new multiple choice question");
-
 	
 	}
 
