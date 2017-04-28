@@ -34,7 +34,6 @@ public class Matching extends Question {
      */
     public void display() {
         // TODO implement here
-        return null;
     }
 
     /**

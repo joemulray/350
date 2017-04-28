@@ -35,16 +35,14 @@ public class ShortAnswer extends Essay {
      */
     public void display() {
         // TODO implement here
-        return null;
     }
 
     /**
      * @param String 
      * @return
      */
-    public void setLimit(void String) {
+    public void setLimit(String limit) {
         // TODO implement here
-        return null;
     }
 
     /**

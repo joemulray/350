@@ -30,7 +30,6 @@ public class Ranking extends Matching {
      */
     public void display() {
         // TODO implement here
-        return null;
     }
 
     /**

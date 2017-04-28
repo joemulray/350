@@ -20,7 +20,7 @@ public class Test extends Survey {
     /**
      * 
      */
-    public ArrayList<int> completed;
+    public ArrayList<Integer> completed;
 
     /**
      * 
@@ -44,16 +44,15 @@ public class Test extends Survey {
      * @param Answer_Sheet AS 
      * @return
      */
-    public void addAS(void Answer_Sheet AS) {
+    public void addAS(AnswerSheet AS) {
         // TODO implement here
-        return null;
     }
 
     /**
      * @param Answer_Sheet AS 
      * @return
      */
-    public String gradeTest(void Answer_Sheet AS) {
+    public String gradeTest(AnswerSheet AS) {
         // TODO implement here
         return "";
     }
@@ -63,25 +62,22 @@ public class Test extends Survey {
      */
     public void display() {
         // TODO implement here
-        return null;
     }
 
     /**
      * @param int 
      * @return
      */
-    public void getQuestion(void int) {
+    public void getQuestion(int number) {
         // TODO implement here
-        return null;
     }
 
     /**
      * @param int 
      * @return
      */
-    public void editQuestion(void int) {
+    public void editQuestion(int number) {
         // TODO implement here
-        return null;
     }
 
     /**
@@ -89,25 +85,22 @@ public class Test extends Survey {
      */
     public void addQuestion() {
         // TODO implement here
-        return null;
     }
 
     /**
      * @param String 
      * @return
      */
-    public void Test(void String) {
+    public void Test(String name) {
         // TODO implement here
-        return null;
     }
 
     /**
      * @param String 
      * @return
      */
-    public void record(void String) {
+    public void record(String answer) {
         // TODO implement here
-        return null;
     }
 
 }

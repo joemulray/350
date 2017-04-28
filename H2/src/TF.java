@@ -31,7 +31,6 @@ public class TF extends MultipleChoice {
      */
     public void display() {
         // TODO implement here
-        return null;
     }
 
     /**

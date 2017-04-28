@@ -34,7 +34,6 @@ public class Essay extends Question {
      */
     public void display() {
         // TODO implement here
-        return null;
     }
 
     /**
@@ -49,9 +48,8 @@ public class Essay extends Question {
      * @param String 
      * @return
      */
-    public void setLength(void String) {
+    public void setLength(String len) {
         // TODO implement here
-        return null;
     }
 
     /**

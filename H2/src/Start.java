@@ -26,7 +26,6 @@ public class Start {
      */
     public void input_menu() {
         // TODO implement here
-        return null;
     }
 
     /**
@@ -34,16 +33,14 @@ public class Start {
      */
     public void createTest() {
         // TODO implement here
-        return null;
     }
 
     /**
      * @param String Test 
      * @return
      */
-    public void takeTest(void String Test) {
+    public void takeTest(String Test) {
         // TODO implement here
-        return null;
     }
 
     /**
@@ -51,16 +48,14 @@ public class Start {
      */
     public void createSurvey() {
         // TODO implement here
-        return null;
     }
 
     /**
      * @param String Survey 
      * @return
      */
-    public void takeSurvey(void String Survey) {
+    public void takeSurvey(String Survey) {
         // TODO implement here
-        return null;
     }
 
     /**
@@ -68,7 +63,6 @@ public class Start {
      */
     public void exit() {
         // TODO implement here
-        return null;
     }
 
     /**
@@ -76,7 +70,6 @@ public class Start {
      */
     public void editTest() {
         // TODO implement here
-        return null;
     }
 
     /**
@@ -84,7 +77,6 @@ public class Start {
      */
     public void editSurvey() {
         // TODO implement here
-        return null;
     }
 
     /**
@@ -92,7 +84,11 @@ public class Start {
      */
     public void save() {
         // TODO implement here
-        return null;
     }
+
+   public static void main(String[] args){
+	
+		System.out.println("MAIN PROGRAM");
+	}
 
 }

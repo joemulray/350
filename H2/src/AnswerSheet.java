@@ -32,7 +32,7 @@ public class AnswerSheet {
      * @param int 
      * @return
      */
-    public String getAnswer(void int) {
+    public String getAnswer(int number) {
         // TODO implement here
         return "";
     }
@@ -42,9 +42,8 @@ public class AnswerSheet {
      * @param String 
      * @return
      */
-    public void setAnswer(void int, void String) {
+    public void setAnswer(int number, String responce) {
         // TODO implement here
-        return null;
     }
 
     /**
@@ -52,7 +51,6 @@ public class AnswerSheet {
      */
     public void display() {
         // TODO implement here
-        return null;
     }
 
 }

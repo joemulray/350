@@ -20,7 +20,7 @@ public class Survey extends Question {
     /**
      * 
      */
-    public ArrayList<int> completed;
+    public ArrayList<Integer> completed;
 
     /**
      * 
@@ -45,7 +45,6 @@ public class Survey extends Question {
      */
     public void addQuestion() {
         // TODO implement here
-        return null;
     }
 
     /**
@@ -53,7 +52,6 @@ public class Survey extends Question {
      */
     public void takeSurvey() {
         // TODO implement here
-        return null;
     }
 
     /**
@@ -61,25 +59,22 @@ public class Survey extends Question {
      */
     public void display() {
         // TODO implement here
-        return null;
     }
 
     /**
      * @param String 
      * @return
      */
-    public void Survey(void String) {
+    public void Survey(String nsmr) {
         // TODO implement here
-        return null;
     }
 
     /**
      * @param int 
      * @return
      */
-    public void editQuestion(void int) {
+    public void editQuestion(int number) {
         // TODO implement here
-        return null;
     }
 
 }

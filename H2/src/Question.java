@@ -20,7 +20,7 @@ public class Question {
     /**
      * @param int
      */
-    public void Question(void int) {
+    public void Question(int number) {
         // TODO implement here
     }
 
@@ -29,7 +29,6 @@ public class Question {
      */
     public void display() {
         // TODO implement here
-        return null;
     }
 
     /**
@@ -44,9 +43,8 @@ public class Question {
      * @param String 
      * @return
      */
-    public void setQuestion(void String) {
+    public void setQuestion(String question) {
         // TODO implement here
-        return null;
     }
 
 }

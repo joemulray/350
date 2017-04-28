@@ -37,7 +37,6 @@ public class Answers {
      */
     public void display() {
         // TODO implement here
-        return null;
     }
 
     /**
@@ -45,9 +44,8 @@ public class Answers {
      * @param String 
      * @return
      */
-    public void getAnswer(void int, void String) {
+    public void getAnswer(int number) {
         // TODO implement here
-        return null;
     }
 
 }

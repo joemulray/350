@@ -34,7 +34,6 @@ public class MultipleChoice extends Question {
      */
     public void display() {
         // TODO implement here
-        return null;
     }
 
     /**
@@ -49,18 +48,16 @@ public class MultipleChoice extends Question {
      * @param String 
      * @return
      */
-    public void addChoice(void String) {
+    public void addChoice(String choice) {
         // TODO implement here
-        return null;
     }
 
     /**
      * @param String 
      * @return
      */
-    public void removeChoice(void String) {
+    public void removeChoice(String choice) {
         // TODO implement here
-        return null;
     }
 
 }
