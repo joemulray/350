@@ -16,8 +16,8 @@ public class TF extends MultipleChoice {
      * 
      */
     public String type; 
-
-
+    //List<String> choices = new ArrayList();
+    public String prompt;
 
     /**
      * 
@@ -41,7 +41,16 @@ public class TF extends MultipleChoice {
         return "";
     }
 
-    public void create(){}
+    public void create(){
+	Scanner keyboard = new Scanner(System.in);	
+
+
+	System.out.println("Enter your prompt or True False Question:");
+	prompt = keyboard.nextLine();
+	
+	
+
+    }
 
 
     public void setType(String type){

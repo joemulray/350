@@ -21,7 +21,7 @@ public class Essay extends Question {
      * 
      */
     public String type;
-
+    public String prompt;
     /**
      * 
      */
@@ -61,7 +61,7 @@ public class Essay extends Question {
 
         Scanner keyboard = new Scanner(System.in);
         System.out.println("Enter Essay Question:");
-        this.type = keyboard.nextLine();
+        this.prompt = keyboard.nextLine();
 
         System.out.println("Enter Essay Length:");
         this.length = keyboard.nextLine();

@@ -16,7 +16,9 @@ public class Ranking extends Matching {
      * 
      */
     public String type;
-
+    public String prompt;
+    public int numChoices;
+    public List<String> choices = new ArrayList<String>();
 
     /**
      * 
@@ -37,9 +39,33 @@ public class Ranking extends Matching {
      */
     public String getType() {
         // TODO implement here
-        return "";
+        return this.type;
     }
-    public void create(){}
+    public void create(){
+	Scanner keyboard = new Scanner(System.in);
+	
+	System.out.println("Enter the prompt or your ranking question:");
+	this.prompt = keyboard.nextLine();
+	
+	System.out.println("Enter the number of choices for your ranking question:");
+	this.numChoices = keyboard.nextInt();
+	
+	keyboard.nextLine();	
+	
+
+	for(int index = 1; index <= numChoices; index++){
+
+		String option;
+		System.out.println("Enter choice #" + index + ": ");
+		option = keyboard.nextLine();
+		
+		this.choices.add(option);
+	
+	}
+
+
+
+    }
 
     public void setType(String type){
         this.type = type;

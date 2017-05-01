@@ -1,0 +1,9 @@
+#TODO:
+
+Fix switch statements in start prob need to move them into function so object is callable
+make functions for menu options.
+
+Finish create functions
+impliment display functions, 
+serialization to get working.
+

@@ -27,14 +27,10 @@ public class Start {
     public void menu() {
         // TODO implement here
 
-	//variable declaration
-	int choice; 
+	int choice, option;
 	Scanner keyboard = new Scanner(System.in);
-	Test test = new Test();
-	Survey survey = new Survey();
-		
 
-	//display menu options.
+
 	System.out.println("1) Survey\n2) Test");
 			
 	choice = keyboard.nextInt();
@@ -46,19 +42,79 @@ public class Start {
 	System.out.println("3) Load a Survey");
 	System.out.println("4) Save a Survey");
 	System.out.println("5) Quit");
+
+	option = keyboard.nextInt();
+	
+	switch (option){
+		case 1:
+			Survey survey = new Survey();	
+			break;
+
+		case 2:
+			System.out.println("Display a Survey");
+			break;
+		
+		case 3:
+			System.out.println("Load a Survey");
+			break;
+
+		case 4:
+			System.out.println("Save a Survey");
+			break;
+
+		case 5:
+			System.exit(0);
+
+		default:
+			System.out.println("Invalid Selection.");
+			menu();
+			break;
+		}
+	
 	}
+
 	
 	else{
+
 	System.out.println("1) Create a new Test");
 	System.out.println("2) Display a new Test");
 	System.out.println("3) Load a Test");
 	System.out.println("4) Save a Test");
 	System.out.println("5) Quit");
 	
+	option = keyboard.nextInt();	
+	
+	switch (option){
+		case 1:
+			Test test = new Test();
+			break;
+
+		case 2:
+			System.out.println("Display Test");
+			break;
+		
+		case 3:
+			System.out.println("Load a Test");
+			break;
+
+		case 4:
+			System.out.println("Save a Test");
+			break;
+
+		case 5:
+			exit();
+
+		default:
+			System.out.println("Invalid Selection.");
+			menu();
+			break;
+		}
+		
+		test.addQuestion();
+		
 	}
 		
-	choice = keyboard.nextInt();
-    test.addQuestion();
+
 	}
 
     /**

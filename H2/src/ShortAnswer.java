@@ -15,6 +15,7 @@ public class ShortAnswer extends Essay {
     /**
      * 
      */
+    public String prompt;
     public String type;
 
     /**
@@ -51,14 +52,14 @@ public class ShortAnswer extends Essay {
      */
     public String getLimit() {
         // TODO implement here
-        return "";
+        return this.type;
     }
 
     public void create(){
 
         Scanner keyboard = new Scanner(System.in);
-        System.out.println("Enter Short Answer Question:");
-        this.type = keyboard.nextLine();
+        System.out.println("Enter prompt or your Short Answer question:");
+        this.prompt = keyboard.nextLine();
 
         System.out.println("Enter Short Answer Length:");
         this.length = keyboard.nextLine();

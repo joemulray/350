@@ -16,7 +16,10 @@ public class MultipleChoice extends Question {
      * 
      */
     public String type;
-    public ArrayList<String> choices;
+    public List<String> choices = new ArrayList<String>();
+    public int numChoices;
+    public String prompt;
+
 
     /**
      * 
@@ -57,7 +60,31 @@ public class MultipleChoice extends Question {
     }
 
 
-    public void create(){}
+    public void create(){
+	
+	Scanner keyboard = new Scanner(System.in);
+	
+	System.out.println("Enter the prompt or your multiple choice question:");
+	this.prompt = keyboard.nextLine();
+
+	
+	System.out.println("Enter the number of choices for your Mutiple Choice question:");
+	this.numChoices = keyboard.nextInt();
+
+	keyboard.nextLine();
+
+	for(int index = 1; index <= numChoices; index++){
+
+		String option;
+		System.out.println("Enter choice #" + index + ": ");
+		option = keyboard.nextLine();
+		
+		this.choices.add(option);
+	
+	}
+
+
+	}
 
     public void setType(String type){
         this.type = type;
