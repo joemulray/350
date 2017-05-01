@@ -1,4 +1,3 @@
-
 import java.util.*;
 
 /**
@@ -9,13 +8,13 @@ public class Matching extends Question {
     /**
      * Default constructor
      */
-    public Matching() {
+    public Matching(){
     }
 
     /**
      * 
      */
-    public Question type;
+    public String type;
 
     /**
      * 
@@ -43,5 +42,9 @@ public class Matching extends Question {
         // TODO implement here
         return "";
     }
+    public void create(){}
 
+    public void setType(String type){
+        this.type = type;
+    }
 }

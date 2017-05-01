@@ -15,19 +15,16 @@ public class Essay extends Question {
     /**
      * 
      */
-    public String length;
+    public String length; 
 
     /**
      * 
      */
-    public Question type;
+    public String type;
 
     /**
      * 
      */
-    public void Essay() {
-        // TODO implement here
-    }
 
     /**
      * @return
@@ -41,7 +38,7 @@ public class Essay extends Question {
      */
     public String getType() {
         // TODO implement here
-        return "";
+        return "Essay";
     }
 
     /**
@@ -58,6 +55,20 @@ public class Essay extends Question {
     public String getLength() {
         // TODO implement here
         return "";
+    }
+
+    public void create(){
+
+        Scanner keyboard = new Scanner(System.in);
+        System.out.println("Enter Essay Question:");
+        this.type = keyboard.nextLine();
+
+        System.out.println("Enter Essay Length:");
+        this.length = keyboard.nextLine();
+
+    }
+    public void setType(String type){
+        this.type = type;
     }
 
 }

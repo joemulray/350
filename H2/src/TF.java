@@ -15,7 +15,7 @@ public class TF extends MultipleChoice {
     /**
      * 
      */
-    public Question type;
+    public String type; 
 
 
 
@@ -39,6 +39,13 @@ public class TF extends MultipleChoice {
     public String getType() {
         // TODO implement here
         return "";
+    }
+
+    public void create(){}
+
+
+    public void setType(String type){
+        this.type = type;
     }
 
 }

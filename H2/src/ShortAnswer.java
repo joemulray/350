@@ -15,20 +15,13 @@ public class ShortAnswer extends Essay {
     /**
      * 
      */
-    public Question type;
+    public String type;
 
     /**
      * 
      */
     public String limit;
 
-
-    /**
-     * 
-     */
-    public void ShortAnswer() {
-        // TODO implement here
-    }
 
     /**
      * @return
@@ -59,6 +52,20 @@ public class ShortAnswer extends Essay {
     public String getLimit() {
         // TODO implement here
         return "";
+    }
+
+    public void create(){
+
+        Scanner keyboard = new Scanner(System.in);
+        System.out.println("Enter Short Answer Question:");
+        this.type = keyboard.nextLine();
+
+        System.out.println("Enter Short Answer Length:");
+        this.length = keyboard.nextLine();
+    }
+
+    public void setType(String type){
+        this.type = type;
     }
 
 }

@@ -9,13 +9,13 @@ public class Ranking extends Matching {
     /**
      * Default constructor
      */
-    public Ranking() {
+    public Ranking(){
     }
 
     /**
      * 
      */
-    public Question type;
+    public String type;
 
 
     /**
@@ -38,6 +38,11 @@ public class Ranking extends Matching {
     public String getType() {
         // TODO implement here
         return "";
+    }
+    public void create(){}
+
+    public void setType(String type){
+        this.type = type;
     }
 
 }

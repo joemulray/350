@@ -15,11 +15,7 @@ public class MultipleChoice extends Question {
     /**
      * 
      */
-    public Question type;
-
-    /**
-     * 
-     */
+    public String type;
     public ArrayList<String> choices;
 
     /**
@@ -58,6 +54,13 @@ public class MultipleChoice extends Question {
      */
     public void removeChoice(String choice) {
         // TODO implement here
+    }
+
+
+    public void create(){}
+
+    public void setType(String type){
+        this.type = type;
     }
 
 }

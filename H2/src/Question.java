@@ -47,4 +47,10 @@ public abstract class Question {
         // TODO implement here
     }
 
+    public void addQuestion(){
+
+        System.out.println("Questions was called");
+
+    }
+
 }

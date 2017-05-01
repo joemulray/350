@@ -6,8 +6,7 @@ JC = javac
 FLAGS = cfm
 VIEWER = more
 
-FILES = AnswerSheet.java \
-	Answers.java \
+FILES = Answers.java \
 	Essay.java \
 	Matching.java \
 	MultipleChoice.java \
@@ -18,7 +17,9 @@ FILES = AnswerSheet.java \
 	Survey.java \
 	Test.java \
 	TF.java \
-	Main.java
+	Main.java \
+	Output.java \
+	Console.java
 	
 
 MAIN = Survey.jar
