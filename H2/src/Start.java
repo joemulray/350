@@ -47,7 +47,8 @@ public class Start {
 	
 	switch (option){
 		case 1:
-			Survey survey = new Survey();	
+			Survey survey = new Survey();
+			survey.create();
 			break;
 
 		case 2:
@@ -87,6 +88,7 @@ public class Start {
 	switch (option){
 		case 1:
 			Test test = new Test();
+			test.create();
 			break;
 
 		case 2:
@@ -109,8 +111,6 @@ public class Start {
 			menu();
 			break;
 		}
-		
-		test.addQuestion();
 		
 	}
 		
