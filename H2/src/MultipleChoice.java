@@ -40,15 +40,32 @@ public class MultipleChoice extends Question {
      */
     public String getType() {
         // TODO implement here
-        return "";
+        return this.type;
     }
 
     /**
      * @param String 
      * @return
      */
-    public void addChoice(String choice) {
-        // TODO implement here
+    public void addChoice() {
+    Scanner keyboard = new Scanner(System.in);
+
+
+    System.out.println("Enter the number of choices you would like to add to your MC Quesiton:");
+    this.numChoices = keyboard.nextInt();
+
+    keyboard.nextLine();
+
+    for(int index = 1; index <= numChoices; index++){
+
+        String option;
+        System.out.println("Enter choice #" + index + ": ");
+        option = keyboard.nextLine();
+        
+        this.choices.add(option);
+    
+    }
+       
     }
 
     /**

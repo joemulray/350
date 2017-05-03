@@ -16,6 +16,8 @@ public abstract class Question {
      * 
      */
     public int number;
+    public String prompt;
+    public String type;
 
     /**
      * @param int
@@ -49,8 +51,11 @@ public abstract class Question {
 
     public void addQuestion(){
 
-        System.out.println("Questions was called");
+    }
 
+    public String getType(){
+        System.out.println("Get type in Question called!");
+        return this.type;
     }
 
 }

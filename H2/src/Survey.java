@@ -15,11 +15,7 @@ public class Survey extends Question {
     public String name;
     public ArrayList<Question> Questions = new ArrayList<Question>();
     Answers answer= new Answers();
-    public String type = "Survey";
-
-
-
-
+    public String type;
 
 
     /**
@@ -103,7 +99,14 @@ public class Survey extends Question {
      * @return
      */
     public void display() {
-        // TODO implement here
+
+        int count = 1;
+
+        for(Question question : Questions ){
+            System.out.println(question.getType());
+            System.out.println(count + ":" + question.prompt);
+            count ++;
+        }
     }
 
     /**
@@ -122,6 +125,9 @@ public class Survey extends Question {
         // TODO implement here
     }
 
+    public void getQuestion(int number){
+        //TODO return question.
+    }
 
     public void create(){
 
@@ -129,10 +135,12 @@ public class Survey extends Question {
         Scanner keyboard = new Scanner(System.in);
 
         System.out.println("********");
-        System.out.println("Survey");
+        System.out.println(this.type);
         System.out.println("********");
 
-        System.out.println("How many Questions would you like to have in for your Survey?:");
+        System.out.println("How many Questions would you like to have in for your "
+            + this.type + "?:");
+
         numQuestions = keyboard.nextInt();
 
         for (int index = 0; index < numQuestions; index++){
@@ -140,8 +148,17 @@ public class Survey extends Question {
             addQuestion();
         }
 
-        System.out.println("Survey Created.");
+        System.out.println(this.type + " Created.");
     }
 
+    public void setType(String type){
+
+        this.type = type;
+    }
+
+    
+    public void record(String answer) {
+
+    }
 
 }

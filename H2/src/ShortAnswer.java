@@ -15,14 +15,6 @@ public class ShortAnswer extends Essay {
     /**
      * 
      */
-    public String prompt;
-    public String type;
-
-    /**
-     * 
-     */
-    public String limit;
-
 
     /**
      * @return
@@ -31,30 +23,7 @@ public class ShortAnswer extends Essay {
         // TODO implement here
     }
 
-    /**
-     * @param String 
-     * @return
-     */
-    public void setLimit(String limit) {
-        // TODO implement here
-    }
-
-    /**
-     * @return
-     */
-    public String getType() {
-        // TODO implement here
-        return "";
-    }
-
-    /**
-     * @return
-     */
-    public String getLimit() {
-        // TODO implement here
-        return this.type;
-    }
-
+    @Override
     public void create(){
 
         Scanner keyboard = new Scanner(System.in);
@@ -65,8 +34,5 @@ public class ShortAnswer extends Essay {
         this.length = keyboard.nextLine();
     }
 
-    public void setType(String type){
-        this.type = type;
-    }
 
 }

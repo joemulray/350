@@ -31,6 +31,10 @@ public class Start {
 	Scanner keyboard = new Scanner(System.in);
 
 
+	System.out.println("********");
+    System.out.println("Welcome");
+    System.out.println("********");
+
 	System.out.println("1) Survey\n2) Test");
 			
 	choice = keyboard.nextInt();
@@ -48,7 +52,9 @@ public class Start {
 	switch (option){
 		case 1:
 			Survey survey = new Survey();
+			survey.setType("Survey");
 			survey.create();
+			survey.display();
 			break;
 
 		case 2:
@@ -64,7 +70,7 @@ public class Start {
 			break;
 
 		case 5:
-			System.exit(0);
+			exit();
 
 		default:
 			System.out.println("Invalid Selection.");
@@ -88,7 +94,9 @@ public class Start {
 	switch (option){
 		case 1:
 			Test test = new Test();
+			test.setType("Test");
 			test.create();
+			test.display();
 			break;
 
 		case 2:
@@ -152,6 +160,8 @@ public class Start {
      */
     public void exit() {
         // TODO implement here
+        System.out.println("Exiting....");
+        System.exit(0);
     }
 
     /**

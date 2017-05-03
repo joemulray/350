@@ -7,3 +7,4 @@ Finish create functions
 impliment display functions, 
 serialization to get working.
 
+Inherit test from survey add a Type option and make one create function() along with other options;
