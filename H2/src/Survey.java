@@ -40,6 +40,7 @@ public class Survey extends Question {
     System.out.println("4) Add a new essay question");
     System.out.println("5) Add a new ranking question");
     System.out.println("6) Add a new matching question");
+    System.out.println("7) Exit");
 
     choice = keyboard.nextInt();
 
@@ -80,6 +81,9 @@ public class Survey extends Question {
             MQ.create();
             this.Questions.add(MQ);
             break;
+        case 7:
+            exit();
+
         default:
             System.out.println("Select a valid Question.");
             addQuestion();
@@ -101,21 +105,41 @@ public class Survey extends Question {
     public void display() {
 
         int count = 1;
+        int index;
 
         for(Question question : Questions ){
-            System.out.println(question.getType());
-            System.out.println(count + ":" + question.prompt);
+            System.out.println(count + ")");
+            System.out.println(question.prompt);
+
+            switch(question.self){
+                case "Essay":
+                case "ShortAnswer":
+                    System.out.println("Length:" + question.getLength());
+                    break;
+                case "Matching":
+                    System.out.println("Matching Will Impliment Later");
+                    break;
+                case "MultipleChoice":
+                case "Ranking":
+                case "TF":
+                    index = 1;
+                    //System.out.println(question.self + " Choices:");
+                    for(String choice : question.getChoices()){
+                        System.out.println("\t" + index + "." + choice);
+                        index++;
+                    }
+                    break;
+
+                default:
+                    break;
+
+
+            }
+            System.out.println("");
             count ++;
         }
     }
 
-    /**
-     * @param String 
-     * @return
-     */
-    public void Survey(String nsmr) {
-        // TODO implement here
-    }
 
     /**
      * @param int 
@@ -134,9 +158,11 @@ public class Survey extends Question {
         int numQuestions;
         Scanner keyboard = new Scanner(System.in);
 
-        System.out.println("********");
-        System.out.println(this.type);
-        System.out.println("********");
+        getName();
+
+        System.out.println("****************");
+        System.out.println(this.type + " : " +  this.name);
+        System.out.println("****************");
 
         System.out.println("How many Questions would you like to have in for your "
             + this.type + "?:");
@@ -159,6 +185,17 @@ public class Survey extends Question {
     
     public void record(String answer) {
 
+    }
+
+    public void getName(){
+        Scanner keyboard = new Scanner(System.in);
+        System.out.println("Enter name for " + this.type + ":");
+        this.name = keyboard.nextLine();
+    }
+
+    public void exit(){
+        System.out.println("Exiting....");
+        System.exit(0);
     }
 
 }

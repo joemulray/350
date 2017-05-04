@@ -29,7 +29,5 @@ public class Test extends Survey {
     /**
      * @return
      */
-    public void display() {
-        // TODO implement here
-    }
+
 }

@@ -9,16 +9,11 @@ public class Matching extends Question {
      * Default constructor
      */
     public Matching(){
+        this.self = "Matching";
     }
 
-    /**
-     * 
-     */
-    public String type;
-
-    /**
-     * 
-     */
+    public int numChoices;
+    public List<String> choices = new ArrayList<String>();
     public String side;
 
     /**
@@ -28,23 +23,15 @@ public class Matching extends Question {
         // TODO implement here
     }
 
-    /**
-     * @return
-     */
-    public void display() {
-        // TODO implement here
+    public void create(){
+        
+        System.out.println("Enter your Matching prompt or question");
+
+    }
+    
+    @Override
+    public List<String> getChoices(){
+        return this.choices;
     }
 
-    /**
-     * @return
-     */
-    public String getType() {
-        // TODO implement here
-        return "";
-    }
-    public void create(){}
-
-    public void setType(String type){
-        this.type = type;
-    }
 }

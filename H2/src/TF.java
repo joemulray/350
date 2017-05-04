@@ -9,7 +9,9 @@ public class TF extends MultipleChoice {
     /**
      * Default constructor
      */
+    String type;
     public TF() {
+        this.self = "TF";
     }
 
     public void TF() {
@@ -30,9 +32,4 @@ public class TF extends MultipleChoice {
 
     }
 
-/*
-    public void setType(String type){
-        this.type = type;
-    }
-*/
 }

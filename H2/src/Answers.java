@@ -16,10 +16,6 @@ public class Answers {
      * 
      */
     public ArrayList<String> userAnswers;
-
-    /**
-     * 
-     */
     public String name;
 
 

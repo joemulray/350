@@ -10,6 +10,7 @@ public class ShortAnswer extends Essay {
      * Default constructor
      */
     public ShortAnswer() {
+        this.self = "ShortAnswer";
     }
 
     /**

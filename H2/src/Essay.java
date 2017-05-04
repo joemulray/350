@@ -10,51 +10,28 @@ public class Essay extends Question {
      * Default constructor
      */
     public Essay() {
+        this.self = "Essay";
     }
 
-    /**
-     * 
-     */
+
     public String length; 
 
-    /**
-     * 
-     */
-    public String type;
-    public String prompt;
-    /**
-     * 
-     */
-
-    /**
-     * @return
-     */
-    public void display() {
-        // TODO implement here
-    }
-
-    /**
-     * @return
-     */
-    public String getType() {
-        // TODO implement here
-        return "Essay";
-    }
 
     /**
      * @param String 
      * @return
      */
     public void setLength(String len) {
-        // TODO implement here
+       this.length = len;
     }
 
     /**
      * @return
      */
+    @Override
     public String getLength() {
         // TODO implement here
-        return "";
+        return this.length;
     }
 
     public void create(){

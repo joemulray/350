@@ -10,15 +10,14 @@ public class MultipleChoice extends Question {
      * Default constructor
      */
     public MultipleChoice() {
+        this.self = "MultipleChoice";
     }
 
     /**
      * 
      */
-    public String type;
     public List<String> choices = new ArrayList<String>();
     public int numChoices;
-    public String prompt;
 
 
     /**
@@ -28,20 +27,6 @@ public class MultipleChoice extends Question {
         // TODO implement here
     }
 
-    /**
-     * @return
-     */
-    public void display() {
-        // TODO implement here
-    }
-
-    /**
-     * @return
-     */
-    public String getType() {
-        // TODO implement here
-        return this.type;
-    }
 
     /**
      * @param String 
@@ -102,9 +87,9 @@ public class MultipleChoice extends Question {
 
 
 	}
-
-    public void setType(String type){
-        this.type = type;
+    @Override
+    public List<String> getChoices(){
+        return this.choices;
     }
 
 }

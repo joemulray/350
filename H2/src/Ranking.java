@@ -10,13 +10,10 @@ public class Ranking extends Matching {
      * Default constructor
      */
     public Ranking(){
+        this.self = "Ranking";
     }
 
-    /**
-     * 
-     */
-    public String type;
-    public String prompt;
+
     public int numChoices;
     public List<String> choices = new ArrayList<String>();
 
@@ -65,10 +62,6 @@ public class Ranking extends Matching {
 
 
 
-    }
-
-    public void setType(String type){
-        this.type = type;
     }
 
 }

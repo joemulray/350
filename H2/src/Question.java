@@ -15,9 +15,10 @@ public abstract class Question {
     /**
      * 
      */
-    public int number;
+
     public String prompt;
     public String type;
+    public String self;
 
     /**
      * @param int
@@ -54,8 +55,19 @@ public abstract class Question {
     }
 
     public String getType(){
-        System.out.println("Get type in Question called!");
         return this.type;
+    }
+
+    public void setType(String type){
+        this.type = type;
+    }
+
+    public List<String> getChoices(){
+        return new ArrayList<String>();
+    }
+
+    public String getLength(){
+        return "";
     }
 
 }
