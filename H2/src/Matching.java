@@ -30,8 +30,8 @@ public class Matching extends Question {
     }
     
     @Override
-    public List<String> getChoices(){
-        return this.choices;
-    }
+    public List<String> getChoices(){return this.choices;}
+
+    public String getPrompt(){return this.prompt;}
 
 }

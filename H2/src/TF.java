@@ -6,10 +6,6 @@ import java.util.*;
  */
 public class TF extends MultipleChoice {
 
-    /**
-     * Default constructor
-     */
-    String type;
     public TF() {
         this.self = "TF";
     }

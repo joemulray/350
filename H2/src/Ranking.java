@@ -64,4 +64,6 @@ public class Ranking extends Matching {
 
     }
 
+    public String getPrompt(){return this.prompt;}
+
 }

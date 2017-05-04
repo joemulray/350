@@ -44,8 +44,6 @@ public class Essay extends Question {
         this.length = keyboard.nextLine();
 
     }
-    public void setType(String type){
-        this.type = type;
-    }
 
+    public String getPrompt(){return this.prompt;}
 }

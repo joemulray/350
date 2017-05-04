@@ -58,16 +58,15 @@ public abstract class Question {
         return this.type;
     }
 
-    public void setType(String type){
-        this.type = type;
-    }
 
-    public List<String> getChoices(){
-        return new ArrayList<String>();
-    }
 
     public String getLength(){
         return "";
     }
 
+    public void create(){};
+
+    public void setType(String type){this.type = type;}
+    public String getPrompt(){return this.prompt;}
+    public List<String> getChoices(){ return new ArrayList<String>();}
 }
