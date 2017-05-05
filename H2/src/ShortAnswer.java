@@ -1,10 +1,10 @@
 
 import java.util.*;
-
+import java.io.Serializable;
 /**
  * 
  */
-public class ShortAnswer extends Essay {
+public class ShortAnswer extends Essay implements Serializable {
 
     /**
      * Default constructor

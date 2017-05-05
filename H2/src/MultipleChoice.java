@@ -1,10 +1,10 @@
 
 import java.util.*;
-
+import java.io.Serializable;
 /**
  * 
  */
-public class MultipleChoice extends Question {
+public class MultipleChoice extends Question implements Serializable {
 
     /**
      * Default constructor
@@ -55,7 +55,7 @@ public class MultipleChoice extends Question {
 
     /**
      * @param String 
-     * @return
+     * @return null
      */
     public void removeChoice(String choice) {
         // TODO implement here

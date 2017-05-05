@@ -1,10 +1,10 @@
 
 import java.util.*;
-
+import java.io.Serializable;
 /**
  * 
  */
-public class Survey extends Question {
+public class Survey extends Start implements Serializable {
 
     /**
      * Default constructor
@@ -158,7 +158,7 @@ public class Survey extends Question {
         int numQuestions;
         Scanner keyboard = new Scanner(System.in);
 
-        getName();
+        setName();
 
         System.out.println("****************");
         System.out.println(this.type + " : " +  this.name);
@@ -187,11 +187,13 @@ public class Survey extends Question {
 
     }
 
-    public void getName(){
+    public void setName(){
         Scanner keyboard = new Scanner(System.in);
         System.out.println("Enter name for " + this.type + ":");
         this.name = keyboard.nextLine();
     }
+
+    public String getName(){return this.name;}
 
     public void exit(){
         System.out.println("Exiting....");

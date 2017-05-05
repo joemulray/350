@@ -8,3 +8,5 @@ impliment display functions,
 serialization to get working.
 
 Inherit test from survey add a Type option and make one create function() along with other options;
+
+Minimize switch staement in STart make less redundant can minimize to one buy using this.type

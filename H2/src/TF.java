@@ -1,10 +1,10 @@
 
 import java.util.*;
-
+import java.io.Serializable;
 /**
  * 
  */
-public class TF extends MultipleChoice {
+public class TF extends MultipleChoice implements Serializable {
 
     public TF() {
         this.self = "TF";

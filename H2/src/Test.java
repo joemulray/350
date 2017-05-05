@@ -1,10 +1,11 @@
 
 import java.util.*;
+import java.io.Serializable;
 
 /**
  * 
  */
-public class Test extends Survey {
+public class Test extends Survey  implements Serializable{
 
     /**
      * Default constructor

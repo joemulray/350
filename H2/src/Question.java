@@ -60,12 +60,8 @@ public abstract class Question {
 
 
 
-    public String getLength(){
-        return "";
-    }
-
+    public String getLength(){return "";}
     public void create(){};
-
     public void setType(String type){this.type = type;}
     public String getPrompt(){return this.prompt;}
     public List<String> getChoices(){ return new ArrayList<String>();}

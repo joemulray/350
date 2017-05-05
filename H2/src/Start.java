@@ -1,10 +1,10 @@
 
 import java.util.*;
-
+import java.io.*;
 /**
  * 
  */
-public class Start {
+public class Start implements Serializable {
 
     /**
      * Default constructor
@@ -13,6 +13,7 @@ public class Start {
     }
 
 
+    Survey SOT;
 
     /**
      * 
@@ -30,10 +31,6 @@ public class Start {
 	int choice, option;
 	Scanner keyboard = new Scanner(System.in);
 
-
-	System.out.println("********");
-    System.out.println("Welcome");
-    System.out.println("********");
 
 	System.out.println("1) Survey\n2) Test");
 			
@@ -54,7 +51,9 @@ public class Start {
 			Survey survey = new Survey();
 			survey.setType("Survey");
 			survey.create();
+			this.SOT = survey;
 			survey.display();
+			save(this.SOT);
 			break;
 
 		case 2:
@@ -67,6 +66,7 @@ public class Start {
 
 		case 4:
 			System.out.println("Save a Survey");
+			save(this.SOT);
 			break;
 
 		case 5:
@@ -98,31 +98,24 @@ public class Start {
 			test.create();
 			test.display();
 			break;
-
 		case 2:
 			System.out.println("Display Test");
 			break;
-		
 		case 3:
 			System.out.println("Load a Test");
 			break;
-
 		case 4:
 			System.out.println("Save a Test");
 			break;
-
 		case 5:
 			exit();
-
 		default:
 			System.out.println("Invalid Selection.");
 			menu();
 			break;
 		}
-		
 	}
 		
-
 	}
 
     /**
@@ -181,8 +174,21 @@ public class Start {
     /**
      * @return
      */
-    public void save() {
-        // TODO implement here
+    public void save(Survey SOT) {
+	
+	System.out.println("Saving " + SOT.getName()  + " .....");
+
+       try {
+         FileOutputStream fileOut =
+         new FileOutputStream("./../ser/" + SOT.getName() + ".ser");
+         ObjectOutputStream out = new ObjectOutputStream(fileOut);
+         out.writeObject(SOT);
+         out.close();
+         fileOut.close();
+         System.out.println(SOT.getName()" was saved");
+      }catch(IOException i) {
+         i.printStackTrace();
+      }
     }
 
 

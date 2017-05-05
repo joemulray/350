@@ -1,10 +1,10 @@
 
 import java.util.*;
-
+import java.io.Serializable;
 /**
  * 
  */
-public class Answers {
+public class Answers implements Serializable {
 
     /**
      * Default constructor
@@ -18,9 +18,6 @@ public class Answers {
     public ArrayList<String> userAnswers;
     public String name;
 
-
-
-
     /**
      * 
      */
@@ -29,16 +26,15 @@ public class Answers {
     }
 
     /**
-     * @return
+     * @return null
      */
     public void display() {
         // TODO implement here
     }
 
     /**
-     * @param int 
-     * @param String 
-     * @return
+     * @param number
+     * @return null
      */
     public void getAnswer(int number) {
         // TODO implement here

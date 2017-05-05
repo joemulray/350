@@ -5,6 +5,7 @@ JAR = jar
 JC = javac
 FLAGS = cfm
 VIEWER = more
+DOCS = javadoc
 
 FILES = Answers.java \
 	Essay.java \
@@ -36,5 +37,16 @@ run:
 view:
 	$(VIEWER) README $(FILES)
 
+
+docs:
+	-mkdir docs/
+	$(DOCS) -d ./docs/ $(FILES)
+	
+swipe:
+	-rm -rf docs/
+	@echo Removed Docs
+
 clean:
-	-rm *.class $(MAIN)
+	@rm *.class $(MAIN)
+	@echo Done.
+

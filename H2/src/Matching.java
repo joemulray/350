@@ -1,9 +1,9 @@
 import java.util.*;
-
+import java.io.Serializable;
 /**
  * 
  */
-public class Matching extends Question {
+public class Matching extends Question implements Serializable {
 
     /**
      * Default constructor
@@ -13,8 +13,8 @@ public class Matching extends Question {
     }
 
     public int numChoices;
-    public List<String> choices = new ArrayList<String>();
-    public String side;
+    public List<String> left = new ArrayList<String>();
+    public List<String> right = new ArrayList<String>();
 
     /**
      * 
@@ -24,14 +24,31 @@ public class Matching extends Question {
     }
 
     public void create(){
-        
+        Scanner keyboard = new Scanner(System.in);
+
         System.out.println("Enter your Matching prompt or question");
+        this.prompt = keyboard.nextLine();
+
+        System.out.println("Enter the number of choices you would like to add to your Matching Quesiton:");
+        this.numChoices = keyboard.nextInt();
+
+        keyboard.nextLine();
+
+        for(int index = 1; index <= numChoices; index++){
+
+            String option;
+            System.out.println("Enter choice #" + index + ": ");
+            option = keyboard.nextLine();
+            this.left.add(option);
+            System.out.println("Enter Matching choice:"); 
+            option = keyboard.nextLine();
+            this.right.add(option);
+            }
 
     }
-    
-    @Override
-    public List<String> getChoices(){return this.choices;}
 
+
+    @Override
     public String getPrompt(){return this.prompt;}
 
 }
