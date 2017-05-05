@@ -13,8 +13,8 @@ public class Start implements Serializable {
     }
 
 
-    Survey SOT;
-
+    private Survey SOT;
+    private String path = "./../ser/";
     /**
      * 
      */
@@ -52,8 +52,6 @@ public class Start implements Serializable {
 			survey.setType("Survey");
 			survey.create();
 			this.SOT = survey;
-			survey.display();
-			save(this.SOT);
 			break;
 
 		case 2:
@@ -62,6 +60,7 @@ public class Start implements Serializable {
 		
 		case 3:
 			System.out.println("Load a Survey");
+			load("Survey");
 			break;
 
 		case 4:
@@ -96,16 +95,19 @@ public class Start implements Serializable {
 			Test test = new Test();
 			test.setType("Test");
 			test.create();
-			test.display();
+			this.SOT = test;
+			save(this.SOT);
 			break;
 		case 2:
 			System.out.println("Display Test");
 			break;
 		case 3:
 			System.out.println("Load a Test");
+			load("");
 			break;
 		case 4:
 			System.out.println("Save a Test");
+			save(this.SOT);
 			break;
 		case 5:
 			exit();
@@ -180,16 +182,38 @@ public class Start implements Serializable {
 
        try {
          FileOutputStream fileOut =
-         new FileOutputStream("./../ser/" + SOT.getName() + ".ser");
+         new FileOutputStream(this.path + SOT.getType() + "/" + SOT.getName() + ".ser");
          ObjectOutputStream out = new ObjectOutputStream(fileOut);
          out.writeObject(SOT);
          out.close();
          fileOut.close();
-         System.out.println(SOT.getName()" was saved");
+         System.out.println(SOT.getName() + " was saved successfully.");
       }catch(IOException i) {
          i.printStackTrace();
       }
+
     }
+
+    public void load(String type){
+
+
+    int count=1;
+    Scanner keyboard = new Scanner(System.in);
+
+	File folder = new File(this.path + type + "");
+	File[] listOfFiles = folder.listFiles();
+
+	for (File file : listOfFiles) {
+	    if (file.isFile()) {
+	        System.out.println(count +"). "+ file.getName());
+	        count++;
+	    }
+
+
+	}
+
+
+	}
 
 
 }

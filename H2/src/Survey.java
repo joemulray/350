@@ -187,6 +187,8 @@ public class Survey extends Start implements Serializable {
 
     }
 
+    public String getType(){return this.type;}
+
     public void setName(){
         Scanner keyboard = new Scanner(System.in);
         System.out.println("Enter name for " + this.type + ":");
