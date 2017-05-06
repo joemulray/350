@@ -1,10 +1,13 @@
 
 import java.util.*;
-
+import java.io.Serializable;
 /**
  * 
  */
-public class Ranking extends Matching {
+public class Ranking extends Matching implements Serializable {
+
+    protected int numChoices;
+    protected List<String> choices = new ArrayList<String>();
 
     /**
      * Default constructor
@@ -14,30 +17,14 @@ public class Ranking extends Matching {
     }
 
 
-    public int numChoices;
-    public List<String> choices = new ArrayList<String>();
-
-    /**
-     * 
-     */
-    public void Ranking() {
-        // TODO implement here
-    }
-
     /**
      * @return
      */
-    public void display() {
-        // TODO implement here
-    }
+    public void display() {}
 
-    /**
-     * @return
-     */
-    public String getType() {
-        // TODO implement here
-        return this.type;
-    }
+
+
+    @Override
     public void create(){
 	Scanner keyboard = new Scanner(System.in);
 	
@@ -64,6 +51,9 @@ public class Ranking extends Matching {
 
     }
 
-    public String getPrompt(){return this.prompt;}
+    @Override
+    public Answers createAnswer(){
+        return this.answer;
+    }
 
 }

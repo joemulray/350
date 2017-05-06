@@ -6,27 +6,15 @@ import java.io.Serializable;
  */
 public class MultipleChoice extends Question implements Serializable {
 
+    protected List<String> choices = new ArrayList<String>();
+    protected int numChoices;
+
     /**
      * Default constructor
      */
     public MultipleChoice() {
         this.self = "MultipleChoice";
     }
-
-    /**
-     * 
-     */
-    public List<String> choices = new ArrayList<String>();
-    public int numChoices;
-
-
-    /**
-     * 
-     */
-    public void MultipleChoice() {
-        // TODO implement here
-    }
-
 
     /**
      * @param String 
@@ -49,19 +37,12 @@ public class MultipleChoice extends Question implements Serializable {
         
         this.choices.add(option);
     
-    }
+        }
        
     }
 
-    /**
-     * @param String 
-     * @return null
-     */
-    public void removeChoice(String choice) {
-        // TODO implement here
-    }
 
-
+    //@Override
     public void create(){
 	
 	Scanner keyboard = new Scanner(System.in);
@@ -87,9 +68,18 @@ public class MultipleChoice extends Question implements Serializable {
 
 
 	}
+
     @Override
     public List<String> getChoices(){
         return this.choices;
     }
+
+     public Answers createAnswer(){
+        return this.answer;
+    }
+
+
+    /*Function for later homework assignment*/
+    public void removeChoice(String choice) {}
 
 }

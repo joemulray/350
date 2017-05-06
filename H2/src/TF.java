@@ -10,9 +10,6 @@ public class TF extends MultipleChoice implements Serializable {
         this.self = "TF";
     }
 
-    public void TF() {
-        // TODO implement here
-    }
 
     @Override
     public void create(){
@@ -25,7 +22,13 @@ public class TF extends MultipleChoice implements Serializable {
     this.choices.add("T");
     this.choices.add("F");
 	
+    if(getType().equals("Test"))
+        System.out.println("This is a test");
 
+    }
+
+    public Answers createAnswer(){
+        return this.answer;
     }
 
 }

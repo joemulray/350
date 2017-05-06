@@ -5,6 +5,10 @@ import java.io.Serializable;
  */
 public class Matching extends Question implements Serializable {
 
+    private int numChoices;
+    private List<String> left = new ArrayList<String>();
+    private List<String> right = new ArrayList<String>();
+
     /**
      * Default constructor
      */
@@ -12,16 +16,7 @@ public class Matching extends Question implements Serializable {
         this.self = "Matching";
     }
 
-    public int numChoices;
-    public List<String> left = new ArrayList<String>();
-    public List<String> right = new ArrayList<String>();
 
-    /**
-     * 
-     */
-    public void Matching() {
-        // TODO implement here
-    }
 
     public void create(){
         Scanner keyboard = new Scanner(System.in);
@@ -51,4 +46,7 @@ public class Matching extends Question implements Serializable {
     @Override
     public String getPrompt(){return this.prompt;}
 
+    public Answers createAnswer(){
+        return this.answer;
+    }
 }

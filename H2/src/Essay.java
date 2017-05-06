@@ -6,6 +6,10 @@ import java.io.Serializable;
  */
 public class Essay extends Question implements Serializable {
 
+
+    protected String length; 
+
+
     /**
      * Default constructor
      */
@@ -13,14 +17,12 @@ public class Essay extends Question implements Serializable {
         this.self = "Essay";
     }
 
-
-    public String length; 
-
-
     /**
      * @param String 
      * @return
      */
+
+
     public void setLength(String len) {
        this.length = len;
     }
@@ -34,6 +36,7 @@ public class Essay extends Question implements Serializable {
         return this.length;
     }
 
+    //@Override
     public void create(){
 
         Scanner keyboard = new Scanner(System.in);
@@ -45,5 +48,8 @@ public class Essay extends Question implements Serializable {
 
     }
 
-    public String getPrompt(){return this.prompt;}
+    public Answers createAnswer(){
+        return this.answer;
+    }
+
 }

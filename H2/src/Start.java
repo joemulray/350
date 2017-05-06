@@ -6,21 +6,14 @@ import java.io.*;
  */
 public class Start implements Serializable {
 
+    private Survey SOT;
+    private String path = "./../ser/";
+
     /**
      * Default constructor
      */
-    public Start() {
-    }
+    public Start() {}
 
-
-    private Survey SOT;
-    private String path = "./../ser/";
-    /**
-     * 
-     */
-    public void Start() {
-        // TODO implement here
-    }
 
     /**
      * @return
@@ -28,15 +21,15 @@ public class Start implements Serializable {
     public void menu() {
         // TODO implement here
 
-	int choice, option;
+	String choice, option;
 	Scanner keyboard = new Scanner(System.in);
 
 
 	System.out.println("1) Survey\n2) Test");
 			
-	choice = keyboard.nextInt();
+	choice = keyboard.nextLine();
 		
-	if(choice == 1){
+	if(choice == "1"){
 	
 	System.out.println("1) Create a new survey");
 	System.out.println("2) Display a Survey");
@@ -44,31 +37,31 @@ public class Start implements Serializable {
 	System.out.println("4) Save a Survey");
 	System.out.println("5) Quit");
 
-	option = keyboard.nextInt();
+	option = keyboard.nextLine();
 	
 	switch (option){
-		case 1:
+		case "1":
 			Survey survey = new Survey();
 			survey.setType("Survey");
 			survey.create();
 			this.SOT = survey;
 			break;
 
-		case 2:
+		case "2":
 			System.out.println("Display a Survey");
 			break;
 		
-		case 3:
+		case "3":
 			System.out.println("Load a Survey");
 			load("Survey");
 			break;
 
-		case 4:
+		case "4":
 			System.out.println("Save a Survey");
 			save(this.SOT);
 			break;
 
-		case 5:
+		case "5":
 			exit();
 
 		default:
@@ -88,28 +81,28 @@ public class Start implements Serializable {
 	System.out.println("4) Save a Test");
 	System.out.println("5) Quit");
 	
-	option = keyboard.nextInt();	
+	option = keyboard.nextLine();	
 	
 	switch (option){
-		case 1:
+		case "1":
 			Test test = new Test();
 			test.setType("Test");
 			test.create();
 			this.SOT = test;
 			save(this.SOT);
 			break;
-		case 2:
+		case "2":
 			System.out.println("Display Test");
 			break;
-		case 3:
+		case "3":
 			System.out.println("Load a Test");
 			load("");
 			break;
-		case 4:
+		case "4":
 			System.out.println("Save a Test");
 			save(this.SOT);
 			break;
-		case 5:
+		case "5":
 			exit();
 		default:
 			System.out.println("Invalid Selection.");

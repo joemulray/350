@@ -13,9 +13,6 @@ public class ShortAnswer extends Essay implements Serializable {
         this.self = "ShortAnswer";
     }
 
-    /**
-     * 
-     */
 
     /**
      * @return
@@ -33,7 +30,12 @@ public class ShortAnswer extends Essay implements Serializable {
 
         System.out.println("Enter Short Answer Length:");
         this.length = keyboard.nextLine();
+
     }
 
+    @Override
+    public Answers createAnswer(){
+        return this.answer;
+    }
 
 }

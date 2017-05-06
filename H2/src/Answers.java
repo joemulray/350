@@ -4,40 +4,29 @@ import java.io.Serializable;
 /**
  * 
  */
-public class Answers implements Serializable {
+public class Answers implements Serializable{
+
+    /**
+     * 
+     */
+    private List<String> answer = new ArrayList<String>();
+
 
     /**
      * Default constructor
      */
-    public Answers() {
-    }
-
-    /**
-     * 
-     */
-    public ArrayList<String> userAnswers;
-    public String name;
-
-    /**
-     * 
-     */
-    public void Answers() {
-        // TODO implement here
-    }
-
-    /**
-     * @return null
-     */
-    public void display() {
-        // TODO implement here
-    }
+    public Answers() {}
 
     /**
      * @param number
      * @return null
      */
-    public void getAnswer(int number) {
-        // TODO implement here
+    public List<String> getAnswer() {
+        return this.answer;
+    }
+
+    public void setAnswer(ArrayList<String> answer){
+        this.answer = answer;
     }
 
 }

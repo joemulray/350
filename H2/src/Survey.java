@@ -12,18 +12,12 @@ public class Survey extends Start implements Serializable {
     public Survey() {
     }
 
-    public String name;
-    public ArrayList<Question> Questions = new ArrayList<Question>();
-    Answers answer= new Answers();
-    public String type;
+    private String name;
+    protected ArrayList<Question> Questions = new ArrayList<Question>();
+    private Answers answer= new Answers();
+    protected String type;
 
 
-    /**
-     * 
-     */
-    public void Survey() {
-        // TODO implement here
-    }
 
     /**
      * @return
@@ -32,7 +26,7 @@ public class Survey extends Start implements Serializable {
 
 
     Scanner keyboard = new Scanner(System.in);
-    int choice;
+    String choice;
 
     System.out.println("1) Add a new T/F question");
     System.out.println("2) Add a new multiple choice");
@@ -42,50 +36,50 @@ public class Survey extends Start implements Serializable {
     System.out.println("6) Add a new matching question");
     System.out.println("7) Exit");
 
-    choice = keyboard.nextInt();
+    choice = keyboard.nextLine();
 
     switch(choice){
-        case 1:
+        case "1":
             TF TFQ = new TF();
             TFQ.setType(this.type);
             TFQ.create();
             this.Questions.add(TFQ);
             break;
-        case 2:
+        case "2":
             MultipleChoice MCQ = new MultipleChoice();
             MCQ.setType(this.type);
             MCQ.create();
             this.Questions.add(MCQ);
             break;
-        case 3:
+        case "3":
             ShortAnswer SAQ = new ShortAnswer();
             SAQ.setType(this.type);
             SAQ.create();
             this.Questions.add(SAQ);
             break;
-        case 4:
+        case "4":
             Essay EQ = new Essay();
             EQ.setType(this.type);
             EQ.create();
             this.Questions.add(EQ);
             break;
-        case 5:
+        case "5":
             Ranking RQ = new Ranking();
             RQ.setType(this.type);
             RQ.create();
             this.Questions.add(RQ);
             break;
-        case 6:
+        case "6":
             Matching MQ = new Matching();
             MQ.setType(this.type);
             MQ.create();
             this.Questions.add(MQ);
             break;
-        case 7:
+        case "7":
             exit();
 
         default:
-            System.out.println("Select a valid Question.");
+            System.out.println("Select a valid Option.");
             addQuestion();
             break;
         }
@@ -125,7 +119,7 @@ public class Survey extends Start implements Serializable {
                     index = 1;
                     //System.out.println(question.self + " Choices:");
                     for(String choice : question.getChoices()){
-                        System.out.println("\t" + index + "." + choice);
+                        System.out.print("\t" + index + "." + choice);
                         index++;
                     }
                     break;

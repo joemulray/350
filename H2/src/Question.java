@@ -1,10 +1,15 @@
 
 import java.util.*;
-
+import java.io.Serializable;
 /**
  * 
  */
-public abstract class Question {
+public abstract class Question implements Serializable {
+
+    protected String prompt;
+    protected String type;
+    protected String self;
+    protected Answers answer;
 
     /**
      * Default constructor
@@ -12,20 +17,6 @@ public abstract class Question {
     public Question() {
     }
 
-    /**
-     * 
-     */
-
-    public String prompt;
-    public String type;
-    public String self;
-
-    /**
-     * @param int
-     */
-    public void Question(int number) {
-        // TODO implement here
-    }
 
     /**
      * @return
@@ -34,35 +25,24 @@ public abstract class Question {
         // TODO implement here
     }
 
-    /**
-     * @return
-     */
-    public String getQuestion() {
-        // TODO implement here
-        return "";
-    }
-
-    /**
-     * @param String 
-     * @return
-     */
-    public void setQuestion(String question) {
-        // TODO implement here
-    }
-
-    public void addQuestion(){
-
-    }
+  
 
     public String getType(){
         return this.type;
     }
 
-
+ 
+    public abstract Answers createAnswer();
+    public abstract void create();
 
     public String getLength(){return "";}
-    public void create(){};
     public void setType(String type){this.type = type;}
     public String getPrompt(){return this.prompt;}
     public List<String> getChoices(){ return new ArrayList<String>();}
+
+
+    //Functions to impliment for a later homework.
+    public String getQuestion() {return "";}
+    public void setQuestion(String question) {}
+    public void addQuestion(){}
 }

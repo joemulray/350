@@ -10,3 +10,9 @@ serialization to get working.
 Inherit test from survey add a Type option and make one create function() along with other options;
 
 Minimize switch staement in STart make less redundant can minimize to one buy using this.type
+
+Make a new menu so error handling wont take you back to start.
+Set up createAnswer working for each method.
+Poss Set up Scanner object for entire class, and maybe implement output method for display.
+
+Do not not if going to keep override for createAnswer and have them in child classes.
