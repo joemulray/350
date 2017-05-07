@@ -52,8 +52,8 @@ public class Ranking extends Matching implements Serializable {
     }
 
     @Override
-    public Answers createAnswer(){
-        return this.answer;
+    public void createAnswer(){
+        //return this.answer;
     }
 
 }

@@ -74,8 +74,31 @@ public class MultipleChoice extends Question implements Serializable {
         return this.choices;
     }
 
-     public Answers createAnswer(){
-        return this.answer;
+     public void createAnswer(){
+
+        String resp;
+        Scanner keyboard = new Scanner(System.in);
+        Answers answer = new Answers();
+
+        System.out.println("Enter the correct Answer for your True False Question?:");
+        System.out.println("1.) T\t 2.) F");
+
+        resp = keyboard.nextLine();
+
+        switch(resp){
+            case "1":
+                answer.setAnswer("T");
+                break;
+            case "2":
+                answer.setAnswer("F");
+                    break;
+            default:
+                System.out.println("Enter a valid asnwer.");
+                createAnswer();
+                break;
+            }
+
+            this.answer = answer;
     }
 
 

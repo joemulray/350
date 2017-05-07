@@ -46,7 +46,7 @@ public class Matching extends Question implements Serializable {
     @Override
     public String getPrompt(){return this.prompt;}
 
-    public Answers createAnswer(){
-        return this.answer;
+    public void createAnswer(){
+        //return this.answer;
     }
 }

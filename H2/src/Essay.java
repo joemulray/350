@@ -36,7 +36,7 @@ public class Essay extends Question implements Serializable {
         return this.length;
     }
 
-    //@Override
+
     public void create(){
 
         Scanner keyboard = new Scanner(System.in);
@@ -48,8 +48,8 @@ public class Essay extends Question implements Serializable {
 
     }
 
-    public Answers createAnswer(){
-        return this.answer;
+    public void createAnswer(){
+        //return this.answer;
     }
 
 }

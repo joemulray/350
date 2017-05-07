@@ -25,8 +25,8 @@ public class Answers implements Serializable{
         return this.answer;
     }
 
-    public void setAnswer(ArrayList<String> answer){
-        this.answer = answer;
+    public void setAnswer(String resp){
+        this.answer.add(resp);
     }
 
 }

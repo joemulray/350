@@ -32,7 +32,7 @@ public abstract class Question implements Serializable {
     }
 
  
-    public abstract Answers createAnswer();
+    public abstract void createAnswer();
     public abstract void create();
 
     public String getLength(){return "";}

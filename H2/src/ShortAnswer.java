@@ -34,8 +34,8 @@ public class ShortAnswer extends Essay implements Serializable {
     }
 
     @Override
-    public Answers createAnswer(){
-        return this.answer;
+    public void createAnswer(){
+        //return this.answer;
     }
 
 }
