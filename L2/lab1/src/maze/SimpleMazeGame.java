@@ -1,3 +1,8 @@
+/*Joseph Mulray
+* CS 350
+* 5/7/17
+*/
+
 /*
  * SimpleMazeGame.java
  * Copyright (c) 2008, Drexel University.
@@ -28,6 +33,8 @@
 package maze;
 
 import maze.ui.MazeViewer;
+import java.io.*;
+import java.util.*;
 
 /**
  * 
@@ -35,32 +42,159 @@ import maze.ui.MazeViewer;
  * @version 1.0
  * @since 1.0
  */
-public class SimpleMazeGame
-{
+public class SimpleMazeGame{
+
 	/**
 	 * Creates a small maze.
 	 */
 	public static Maze createMaze()
 	{
-		
+		//Create new maze object.
 		Maze maze = new Maze();
-		System.out.println("The maze does not have any rooms yet!");
+		Room room1 = new Room(0);
+		Room room2 = new Room(1);
+
+		maze.addRoom(room1);
+		maze.addRoom(room2);
+
+		//not setting a door leaving open space inbetween two doors.
+		room1.setSide(Direction.West, new Wall());
+		room1.setSide(Direction.North, new Wall());
+		room1.setSide(Direction.South, new Wall());
+		room1.setSide(Direction.East, room2);
+
+		room2.setSide(Direction.West, room1);
+		room2.setSide(Direction.East, new Wall());
+		room2.setSide(Direction.North, new Wall());
+		room2.setSide(Direction.South, new Wall());
+
+
+		maze.setCurrentRoom(room1);
+
 		return maze;
 		
 
 	}
 
-	public static Maze loadMaze(final String path)
+	public static Maze loadMaze(final String path) throws IOException
 	{
+		//create list of rooms doors and sides to store when parsing file
+		ArrayList<Room> rooms = new ArrayList<Room>();
+		ArrayList<Door> doors = new ArrayList<Door>();
+		Map<Room, ArrayList<String> > sides = new HashMap<Room, ArrayList<String> >();
+
+
+		File file = new File(path);
+		Scanner mazeFile = new Scanner(file);
+		ArrayList<String> content = new ArrayList<String>();
+		int roomNum,room1, room2;
+		String doorNum;
+		String [] object;
+		ArrayList<String> totalSides = new ArrayList<String>();
+		Direction points [] = {Direction.North, Direction.South, Direction.East, Direction.West};
+
+		//load contents of file into arraylist for parsing.
+		while(mazeFile.hasNext()){
+			content.add(mazeFile.nextLine());
+		}
+
+		mazeFile.close();
+
+		//Create all Rooms;
+		for(String line: content) {
+			object = line.split(" ");
+
+			//if first object equals room, get sides create room
+			if (object[0].equals("room")) {
+
+				ArrayList<String> side = new ArrayList<String>();
+				roomNum = Integer.parseInt(object[1]);
+
+				Room room = new Room(roomNum);
+				rooms.add(room);
+
+				//adding side objects to add to arrraylist
+				side.add(object[2]);
+				side.add(object[3]);
+				side.add(object[4]);
+				side.add(object[5]);
+
+				sides.put(room, side);
+			}
+		}
+
+
+		//create all doors.
+		for(String line2: content){
+			object = line2.split(" ");
+
+			//if object equals door create door and add connecting rooms.
+			if(object[0].equals("door")){
+				doorNum = object[1];
+				room1 = Integer.parseInt(object[2]);
+				room2 = Integer.parseInt(object[3]);
+
+				Door door = new Door(rooms.get(room1), rooms.get(room2));
+
+				//check status of door
+				if(object[4].equals("close")){
+					door.setOpen(false);
+				}
+				else{ door.setOpen(true); }
+
+				doors.add(door);
+			}
+		}
+
+		//create new maze
 		Maze maze = new Maze();
-		System.out.println("Please load a maze from the file!");
+
+
+		//cycle through rooms list, and add walls
+		for(Room room: rooms){
+			totalSides = sides.get(room);
+
+			//add all of the walls with attributes to maze.
+			for(int index= 0; index < points.length; index++){
+
+				String choice = totalSides.get(index);
+
+				//if option is wall create wall vise versa for door and rooms
+				if(choice.equals("wall")){
+					room.setSide(points[index], new Wall());
+				}
+				else if(choice.substring(0,1).equals("d")){
+					int doorSpot = Integer.parseInt(choice.substring(1));
+					Door sideDoor = doors.get(doorSpot);
+					room.setSide(points[index], sideDoor);
+				}
+				else{
+					Room sideRoom = rooms.get(Integer.parseInt(choice));
+					room.setSide(points[index], sideRoom);
+
+				}
+			}
+			//add each room into maze.
+			maze.addRoom(room);
+		}
+
+		//set the current room
+		maze.setCurrentRoom(0);
+
+		//return maze.
 		return maze;
 	}
 
-	public static void main(String[] args)
+	public static void main(String[] args) throws IOException
 	{
+		//part 2 of lab
 		Maze maze = createMaze();
 	    MazeViewer viewer = new MazeViewer(maze);
 	    viewer.run();
+
+		//part 3 of lab.
+	    Maze maze2 = loadMaze("./mazes/large.maze");
+		MazeViewer viewer2 = new MazeViewer(maze2);
+		viewer2.run();
 	}
 }
