@@ -12,6 +12,10 @@ public class Survey extends Start implements Serializable {
     public Survey() {
     }
 
+    /**
+     * survey variables needed for storing question and name
+     */
+    private static final double serialVersionUID = -1L;
     private String name;
     protected ArrayList<Question> Questions = new ArrayList<Question>();
     private Answers answer= new Answers();
@@ -20,7 +24,7 @@ public class Survey extends Start implements Serializable {
 
 
     /**
-     * @return
+     * Function adds a new survey question
      */
     public void addQuestion() {
 
@@ -28,50 +32,53 @@ public class Survey extends Start implements Serializable {
     Scanner keyboard = new Scanner(System.in);
     String choice;
 
-    System.out.println("1) Add a new T/F question");
+    //display menu 3
+    System.out.println("\n1) Add a new T/F question");
     System.out.println("2) Add a new multiple choice");
     System.out.println("3) Add a new short answer question");
     System.out.println("4) Add a new essay question");
     System.out.println("5) Add a new ranking question");
     System.out.println("6) Add a new matching question");
-    System.out.println("7) Exit");
+    System.out.println("7) Quit");
 
     choice = keyboard.nextLine();
 
+
+    //switch statement to create objets based on responce
     switch(choice){
         case "1":
-            TF TFQ = new TF();
+            TF TFQ = new TF(); //create new true false question
             TFQ.setType(this.type);
             TFQ.create();
             this.Questions.add(TFQ);
             break;
         case "2":
             MultipleChoice MCQ = new MultipleChoice();
-            MCQ.setType(this.type);
+            MCQ.setType(this.type); //create new MC question
             MCQ.create();
-            this.Questions.add(MCQ);
+            this.Questions.add(MCQ); //add question to list
             break;
         case "3":
             ShortAnswer SAQ = new ShortAnswer();
-            SAQ.setType(this.type);
+            SAQ.setType(this.type); //create new SAQ question
             SAQ.create();
             this.Questions.add(SAQ);
             break;
         case "4":
-            Essay EQ = new Essay();
+            Essay EQ = new Essay(); //create new Essay question
             EQ.setType(this.type);
             EQ.create();
             this.Questions.add(EQ);
             break;
         case "5":
             Ranking RQ = new Ranking();
-            RQ.setType(this.type);
+            RQ.setType(this.type); //create new Ranking question
             RQ.create();
             this.Questions.add(RQ);
             break;
         case "6":
             Matching MQ = new Matching();
-            MQ.setType(this.type);
+            MQ.setType(this.type); //create new Matching question
             MQ.create();
             this.Questions.add(MQ);
             break;
@@ -79,113 +86,71 @@ public class Survey extends Start implements Serializable {
             exit();
 
         default:
-            System.out.println("Select a valid Option.");
+            //handle wrong input from user.
+            System.out.println("\nSelect a valid Option.");
             addQuestion();
             break;
         }
 
     }
 
-    /**
-     * @return
-     */
-    public void takeSurvey() {
-        // TODO implement here
-    }
 
-    /**
-     * @return
-     */
-    public void display() {
-
-        int count = 1;
-        int index;
-
-        for(Question question : Questions ){
-            System.out.println(count + ")");
-            System.out.println(question.prompt);
-
-            switch(question.self){
-                case "Essay":
-                case "ShortAnswer":
-                    System.out.println("Length:" + question.getLength());
-                    break;
-                case "Matching":
-                    System.out.println("Matching Will Impliment Later");
-                    break;
-                case "MultipleChoice":
-                case "Ranking":
-                case "TF":
-                    index = 1;
-                    //System.out.println(question.self + " Choices:");
-                    for(String choice : question.getChoices()){
-                        System.out.print("\t" + index + "." + choice);
-                        index++;
-                    }
-                    break;
-
-                default:
-                    break;
-
-
-            }
-            System.out.println("");
-            count ++;
-        }
+    //function returns question list
+    public ArrayList<Question> getQuestions(){
+       return this.Questions;
     }
 
 
     /**
-     * @param int 
-     * @return
+     * Function to create a survey
+     * gets number questions and sets attributes.
      */
-    public void editQuestion(int number) {
-        // TODO implement here
-    }
-
-    public void getQuestion(int number){
-        //TODO return question.
-    }
-
     public void create(){
 
         int numQuestions;
         Scanner keyboard = new Scanner(System.in);
 
+        if(getName() == null){
         setName();
 
-        System.out.println("****************");
+        System.out.println("\n****************");
         System.out.println(this.type + " : " +  this.name);
         System.out.println("****************");
-
-        System.out.println("How many Questions would you like to have in for your "
-            + this.type + "?:");
-
-        numQuestions = keyboard.nextInt();
-
-        for (int index = 0; index < numQuestions; index++){
-
-            addQuestion();
         }
 
-        System.out.println(this.type + " Created.");
+
+        System.out.println("\nHow many Questions would you like to have in for your "
+            + this.type + "?:");
+
+        //for each question call addQuestion
+        try{
+
+            numQuestions = keyboard.nextInt();
+
+            for (int index = 0; index < numQuestions; index++){
+                addQuestion();
+            }
+
+            //notify user
+            System.out.println("\n" + this.type + " Created.");
+            }
+
+        catch(Exception e){
+            //handle misinputted infomation
+            System.out.println(e);
+            System.out.println("Please enter a valid number of questions.");
+            create();
+        }
     }
 
-    public void setType(String type){
 
-        this.type = type;
-    }
-
-    
-    public void record(String answer) {
-
-    }
-
+    //Getter and Setter functions for Survey and Test
+    public void setType(String type){this.type = type;}
     public String getType(){return this.type;}
 
     public void setName(){
         Scanner keyboard = new Scanner(System.in);
-        System.out.println("Enter name for " + this.type + ":");
+        System.out.println("\nEnter name for " + this.type + ":");
         this.name = keyboard.nextLine();
     }
 
@@ -195,5 +160,29 @@ public class Survey extends Start implements Serializable {
         System.out.println("Exiting....");
         System.exit(0);
     }
+
+    
+    /*FUNCTIONS BELOW FOR LATER IMPLIMENTATION*/
+    public void record(String answer) {
+    }
+
+    /**
+     * @return null
+     */
+    public void display() {}
+
+    /**
+     * @param number  
+     * @return null
+     * Function for next asssingment
+     */
+    public void editQuestion(int number) {
+        // TODO implement here
+    }
+
+    /**
+     * @param int 
+     * @return
+     */
 
 }

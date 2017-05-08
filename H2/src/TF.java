@@ -6,11 +6,20 @@ import java.io.Serializable;
  */
 public class TF extends MultipleChoice implements Serializable {
 
+    private static final double serialVersionUID = -1L;
+
+    /**
+     * Default Constructor
+     */
+
     public TF() {
         this.self = "TF";
     }
 
-
+    /**
+     * Function to create an TF quesiton
+     * overrides MC option, uses this function
+     */
     @Override
     public void create(){
 	Scanner keyboard = new Scanner(System.in);	
@@ -19,17 +28,21 @@ public class TF extends MultipleChoice implements Serializable {
 	System.out.println("Enter your prompt or True False Question:");
 	prompt = keyboard.nextLine();
 
+    //add only two available choices to list already know two choices.
     this.choices.add("T");
     this.choices.add("F");
-	
-    if(getType().equals("Test"))
-        System.out.println("This is a test");
 
     }
 
+
+
+    /**
+     * Function to create an TF answer
+     * gets the prompt from user and asks for correct answer.
+     */
     @Override
     public void createAnswer(){
-        
+            
         String resp;
         Scanner keyboard = new Scanner(System.in);
         Answers answer = new Answers();
@@ -37,23 +50,27 @@ public class TF extends MultipleChoice implements Serializable {
         System.out.println("Enter the correct Answer for your True False Question?:");
         System.out.println("1.) T\t 2.) F");
 
+        //get responce from user, add to answer not checking values
         resp = keyboard.nextLine();
+        answer.setAnswer(resp);
 
-        switch(resp){
-            case "1":
-                answer.setAnswer("T");
-                break;
-            case "2":
-                answer.setAnswer("F");
-                    break;
-            default:
-                System.out.println("Enter a valid asnwer.");
-                createAnswer();
-                break;
-            }
-
-             this.answer = answer;
+        this.answer = answer;
 
     }
+
+    /**
+     * Function to display a TF
+     * gets the two choices and prints them along with prompt
+     */
+    @Override
+    public void display(){
+        System.out.println(getPrompt());
+        int count = 1;
+        for (String choice: getChoices()) {
+            System.out.print(" "+count + "). " + choice +"\n");
+            count++;
+        }
+    }
+
 
 }

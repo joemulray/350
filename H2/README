@@ -10,4 +10,4 @@ PATHS:
 src/ : holds all source code, and makefile also a copy of this readme
 ser/ : hold all serialization files, Tests stored in ser/Test/ directory and Surveys stored in ser/Survey/
 
-
+README is also included in src/ folder for quick access
