@@ -15,32 +15,53 @@ public class Start implements Serializable {
     ArrayList < Survey > createdSurvey = new ArrayList < Survey > ();
     ArrayList < Survey > createdTest = new ArrayList < Survey > ();
 
-
     /**
      * Default constructor
      */
     public Start() {}
 
 
-
-
     /**
      * Display menu for creating new survey or test
      * creates option based on user input.
      */
-    public void menu() throws IOException, ClassNotFoundException {
-        // TODO implement here
 
-        String choice, option;
+
+    public void menu()  throws IOException, ClassNotFoundException{
+
+        String choice;
         Scanner keyboard = new Scanner(System.in);
-
 
         System.out.println("\n1) Survey\n2) Test");
         
         //get input check values from available options
         choice = keyboard.nextLine();
-        
-        if (choice.equals("1")) {
+
+        while(!choice.equals("1") && ! choice.equals("2")){
+            System.out.println("Invalid Option.");
+            System.out.println("\n1) Survey\n2) Test");
+            choice = keyboard.nextLine();
+            }
+
+        if(choice.equals("1")){
+            surveyMenu();
+        }
+        else{
+            testMenu();
+        }
+
+    }
+
+
+    /**
+     * Function to create a new test.
+     */
+
+
+    public void surveyMenu()  throws IOException, ClassNotFoundException{
+
+            String option;
+            Scanner keyboard = new Scanner(System.in);
 
             //display second menu option
             System.out.println("\n1) Create a new survey");
@@ -73,14 +94,19 @@ public class Start implements Serializable {
                     exit();
 
                 default:
-                    System.out.println("Invalid Selection."); 
-                    menu(); //handle wrong input recall menu
+                    System.out.println("Invalid Selection. Please select a valid option.");
+                    surveyMenu(); //handle wrong input recall menu
                     break;
             }
 
-        } else if (choice.equals("2")) {
 
-            //test menu options
+    }
+
+    public void testMenu() throws IOException, ClassNotFoundException{
+
+            String option;
+            Scanner keyboard = new Scanner(System.in);
+
             System.out.println("\n1) Create a new Test");
             System.out.println("2) Display a new Test");
             System.out.println("3) Load a Test");
@@ -106,20 +132,11 @@ public class Start implements Serializable {
                     exit(); //exit program
                 default:
                     System.out.println("Invalid Selection. Please select a valid option.");
-                    menu(); //handle error recall menu again
+                    testMenu(); //handle error recall menu again
                     break;
             }
-        } else {
-
-            System.out.println("Invalid Selection. Please select a valid option.");
-            menu();
-        }
-
     }
 
-    /**
-     * Function to create a new test.
-     */
     public void createTest() {
 
         //sets the type and adds to created tests

@@ -97,6 +97,7 @@ public class MultipleChoice extends Question implements Serializable {
         return this.choices;
     }
 
+
     /**
      * Function to create an MC answer
      * gets the prompt from user and answer to enter correct info.
