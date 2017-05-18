@@ -50,6 +50,11 @@ swipe:
 	-rm -rf docs/
 	@echo Removed Docs
 
+
+#remove all created tests and surveys
+remove:
+
+
 #clean directory 
 clean:
 	@rm *.class $(MAIN)

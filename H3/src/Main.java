@@ -17,11 +17,13 @@ public class Main implements Serializable{
     System.out.println("****************");
 
     Start start = new Start();
+    int option = start.menu();
 	while(true){
-		start.menu();
+		if(option == 1)
+			start.surveyMenu();
+		else
+			start.testMenu();
 		}	
 
 	}
-
-
 }

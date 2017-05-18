@@ -97,6 +97,27 @@ public class Test extends Survey  implements Serializable{
 
     }
 
+
+    @Override
+    public void display(){
+
+        int count = 1;
+
+        for (Question question: Questions) {
+
+            System.out.println(count + ")");
+            question.display();
+            
+            //if test get correct answer
+            System.out.println("The correct answer is:"); 
+            question.displayAnswer();
+
+            count ++;
+            System.out.println("\n");
+        }
+
+    }
+
     /**
      * @return
      */

@@ -1,4 +1,3 @@
-
 import java.util.*;
 import java.io.Serializable;
 /**
@@ -169,7 +168,19 @@ public class Survey extends Start implements Serializable {
     /**
      * @return null
      */
-    public void display() {}
+    public void display() {
+
+        int count = 1;
+        for (Question question: Questions) {
+
+            System.out.println(count + ")");
+            question.display();
+            
+            count ++;
+            System.out.println("\n");
+        }
+
+    }
 
     /**
      * @param number  
