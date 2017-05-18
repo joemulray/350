@@ -53,7 +53,8 @@ swipe:
 
 #remove all created tests and surveys
 remove:
-
+	@find ./../ser/ -type f -name "*.ser" -delete
+	@echo Removed all .ser Files
 
 #clean directory 
 clean:

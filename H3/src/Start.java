@@ -12,8 +12,6 @@ public class Start implements Serializable {
     private static final double serialVersionUID = -1L;
     private Survey SOT;
     private String path = "./../ser/";
-    ArrayList < Survey > createdSurvey = new ArrayList < Survey > ();
-    ArrayList < Survey > createdTest = new ArrayList < Survey > ();
     Survey current;
 
     /**
@@ -85,7 +83,7 @@ public class Start implements Serializable {
                     break;
 
                 case "2":
-                    display("Survey"); //display a created survey
+                    display(); //display a created survey
                     break;
 
                 case "3":
@@ -93,11 +91,11 @@ public class Start implements Serializable {
                     break;
 
                 case "4":
-                    save(createdSurvey); //save all created surveys
+                    save(); //save all created surveys
                     break;
 
                 case "5":
-                    editSurvey(); //edit a survey
+                    edit("Survey"); //edit a survey
                     break;
 
                 case "6":
@@ -126,13 +124,14 @@ public class Start implements Serializable {
             Scanner keyboard = new Scanner(System.in);
 
             System.out.println("\n1) Create a new Test");
-            System.out.println("2) Display a new Test");
+            System.out.println("2) Display a Test");
             System.out.println("3) Load a Test");
             System.out.println("4) Save a Test");
             System.out.println("5) Modify an Existing Test");
             System.out.println("6) Take a Test");
             System.out.println("7) Tabulate a Test");
-            System.out.println("8) Quit");
+            System.out.println("8) Grade a Test");
+            System.out.println("9) Quit");
 
             option = keyboard.nextLine(); 
 
@@ -142,7 +141,7 @@ public class Start implements Serializable {
                     break;
 
                 case "2":
-                    display("Test"); //display a created test
+                    display(); //display a created test
                     break;
 
                 case "3":
@@ -150,11 +149,11 @@ public class Start implements Serializable {
                     break;
 
                 case "4":
-                    save(createdTest); //save all created tests
+                    save(); //save all created tests
                     break;
 
                 case "5":
-                    editTest(); //edit a test
+                    edit("Test"); //edit a test
                     break;
 
                 case "6":
@@ -166,7 +165,12 @@ public class Start implements Serializable {
                     break;
 
                 case "8":
-                    exit(); 
+                    gradeTest();
+                    break;
+
+
+                case "9":
+                    exit();
 
                 default:
                     System.out.println("Invalid Selection. Please select a valid option.");
@@ -181,7 +185,6 @@ public class Start implements Serializable {
         Test test = new Test();
         test.setType("Test");
         test.create();
-        createdTest.add(test);
         this.current = test;
     }
 
@@ -195,7 +198,6 @@ public class Start implements Serializable {
         Survey survey = new Survey();
         survey.setType("Survey");
         survey.create();
-        //createdSurvey.add(survey);
         this.current = survey;
     }
 
@@ -208,14 +210,14 @@ public class Start implements Serializable {
 
         //if no tests are created return, cant save
         if (this.current == null) {
-            System.out.println("\nPlease create a survey or test before saving.");
+            System.out.println("\nPlease create survey or test before saving.");
             return;
         }
 
 
         //for each SOT in created, get name,type and pathway
 
-            System.out.println("Saving " + this.current.getName() + " .....");
+            System.out.println("\nSaving " + this.current.getName() + " .....");
 
             try {
                 //create output stream for serialization
@@ -226,9 +228,9 @@ public class Start implements Serializable {
                 fileOut.close();
 
                 //write the objects notify user.
-                System.out.println("\n" + this.current.getName() + " was saved successfully.");
-            } catch (IOException i) {
-                i.printStackTrace();
+                System.out.println(this.current.getName() + " was saved successfully.\n");
+            } catch (IOException e) {
+               System.out.println("Could not save " + this.current.getName());
             }
     }
 
@@ -257,11 +259,7 @@ public class Start implements Serializable {
             Survey loadSurvey = (Survey) input.readObject();
 
             //add to correct created type
-            if (type.equals("Survey")) {
-                createdSurvey.add(loadSurvey);
-            } else {
-                createdTest.add(loadSurvey);
-            }
+            this.current = loadSurvey;
 
             System.out.println(name + " loaded successfully");
             //notify user, otherwise cach error
@@ -369,46 +367,21 @@ public class Start implements Serializable {
      * @param type loads a type of file{Survey or Test}
      *  displays SOT after calling getOptions
      */
-    public void display(String type) {
+    public void display() {
 
-        Survey SOT;
-        int number;
-        
-        //get options for survey if thats the type
-        if(type.equals("Survey")){
-            number = getOptions(createdSurvey);
-            if(number == -1){
-                System.out.println("No " + type + " created yet.");
-                return;
-            }
-            SOT = createdSurvey.get(number); //get selected survey and display it
-        }
-        //otherwise get options for test
-        else{
-
-           number = getOptions(createdTest);
-            if(number < 0){
-                System.out.println("No " + type + " created yet.");
-                return;
-            }
-
-            SOT = createdTest.get(number); //get selected test and display it
+        if(this.current == null){
+             System.out.println("\nPlease create/load a survey or test before displaying.");
+             return;
         }
 
-
-        //store questions from SOT
-        ArrayList < Question > Questions = SOT.getQuestions();
-
-        int count = 1;
-        int index;
 
         //display name
         System.out.println("\n********************************");
-        System.out.println("*" + SOT.getType() + " : " + SOT.getName() + "*");
+        System.out.println("*" + this.current.getType() + " : " + this.current.getName() + "*");
         System.out.println("********************************\n");
 
         //display the loaded file
-        SOT.display();
+        this.current.display();
 
     }
 
@@ -438,19 +411,22 @@ public class Start implements Serializable {
     /**
      * @return null
      */
-    public void editTest() {
-        
-        System.out.println("What question do you wish to modify?");
-        System.out.println("Enter existing question.");
-    }
+    public void edit(String type)throws IOException, ClassNotFoundException {
+        int number;
+        Scanner keyboard = new Scanner(System.in);
 
-    /**
-     * @return null
-     */
-    public void editSurvey() {
-
+        System.out.println("What " + type + " do you wish to modify");
+        load(type);
         System.out.println("What question do you wish to modify?");
-        System.out.println("Enter existing question.");
+        System.out.print("Enter existing question.");
+
+            try{
+
+            }
+            catch(Exception e){
+                
+            }
+
     }
 
     /**
@@ -462,6 +438,11 @@ public class Start implements Serializable {
     }
 
     public void tabulate(){
+
+    }
+
+
+    public void gradeTest(){
 
     }
 
