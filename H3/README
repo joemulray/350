@@ -1,13 +1,22 @@
 Joseph Mulray
 CS 350
-April 28 2017
+May 18 2017
 
-Makefile included just run make within /src/ folder, will create jar file and execute program for you.
+Makefile commands:
 
-Main Driver is Main.java,  calls Start which creates Surveys, and Tests. Did not come across any issues when running. Included javadoc comments throughout program, can run make docs and it will generate for you if you want to view them. Also left the option to set a correct answer for ShortAnswer and Essay, and put needs grading when prompted. Also used serialization to store objects did not include any of precreated tests or surveys with zip so will have to create one before loading. 
+run : can run make build and compile
+view : view all source code
+clean : remove all class files and main jar file
+docs : generate javadoc files
+remove : remove all serialization files
+swipe : remove javadoc generated files
+
+
+Main Class: Main.java  - calls Start.java has most of the functionality with creating Surveys, and Tests.
+
+
 
 PATHS:
 src/ : holds all source code, and makefile also a copy of this readme
 ser/ : hold all serialization files, Tests stored in ser/Test/ directory and Surveys stored in ser/Survey/
 
-README is also included in src/ folder for quick access
