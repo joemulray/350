@@ -207,12 +207,20 @@ public class Survey extends Start implements Serializable {
             editQ.setPrompt(newPrompt);
 
         }
+
+
+        if(editQ.getSelf().equals("MultipleChoice")){
+        System.out.println("Do you wish to modify the choices? ");
+            option = keyboard.nextLine();
+
+        if(option.equalsIgnoreCase("y") || option.equalsIgnoreCase("yes") ){
+                
+            editQ.editChoices();
+
+            }
+        }
         
     }
 
-    /**
-     * @param int 
-     * @return
-     */
 
 }

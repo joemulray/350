@@ -143,6 +143,36 @@ public class MultipleChoice extends Question implements Serializable {
 
     }
 
+    //function to edit choices for a multiple choice question
+    @Override
+    public void editChoices(){
+
+    Scanner keyboard = new Scanner(System.in);
+    int count = 1, number;
+    String newChoice;
+
+        //for each choice, print choice increase counter.
+        for (String choice: getChoices()) {
+            System.out.print(" " + count + "). " + choice);
+            count++;
+        }
+
+        System.out.print("\nEnter choice: ");
+        try{
+            
+            number = keyboard.nextInt();
+            keyboard.nextLine();
+            newChoice = keyboard.nextLine();
+
+            this.choices.set(number -1, newChoice);
+
+        }
+        catch(Exception e){
+            editChoices();
+        }
+
+    }
+
     /*Function for later homework assignment*/
     public void removeChoice(String choice) {}
 

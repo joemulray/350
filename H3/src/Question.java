@@ -50,8 +50,8 @@ public abstract class Question implements Serializable {
     public List<String> getChoices(){ return new ArrayList<String>();}
     public void displayAnswer(){this.answer.display();}
     public void setPrompt(String prompt){ this.prompt = prompt; }
-
-
+    public void editChoices(){}
+    public String getSelf(){ return this.self; }
 
     //Functions to impliment for a later homework.
     public String getQuestion() {return "";}

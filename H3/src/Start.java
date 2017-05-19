@@ -415,29 +415,6 @@ public class Start implements Serializable {
         // TODO implement here
     }
 
-    /**
-     * @return null
-     */
-    public void edit(String type)throws IOException, ClassNotFoundException {
-        int number;
-        Scanner keyboard = new Scanner(System.in);
-
-        System.out.println("\nWhat " + type + " do you wish to modify");
-        load(type);
-        System.out.println("What question do you wish to modify?");
-        System.out.print("Enter existing question: ");
-
-            try{
-
-                number = keyboard.nextInt();
-                this.current.editQuestion(number);
-
-            }
-            catch(Exception e){
-                
-            }
-
-    }
 
     /**
      * @param String Test 
@@ -455,5 +432,33 @@ public class Start implements Serializable {
     public void gradeTest(){
 
     }
+
+
+    public void edit(String type)throws IOException, ClassNotFoundException {
+    
+    int number;
+    Scanner keyboard = new Scanner(System.in);
+    boolean isTrue = true;
+    
+    System.out.println("\nWhat " + type + " do you wish to modify");
+    load(type);
+
+
+    System.out.println("\nWhat question do you wish to modify?");
+    System.out.print("Enter existing question: ");
+
+    while(isTrue){
+
+        try{
+            number = keyboard.nextInt();
+            this.current.editQuestion(number);
+            isTrue = false;
+
+        }
+        catch(Exception e){
+             System.out.print("Enter existing question: ");
+        }
+    }
+}
 
 }
