@@ -31,14 +31,14 @@ public class Start implements Serializable {
         String choice;
         Scanner keyboard = new Scanner(System.in);
 
-        System.out.println("\n1) Survey\n2) Test");
+        System.out.println("\n1) Survey\n2) Test\n3) Quit");
         
         //get input check values from available options
         choice = keyboard.nextLine();
 
-        while(!choice.equals("1") && ! choice.equals("2")){
-            System.out.println("Invalid Option.");
-            System.out.println("\n1) Survey\n2) Test");
+        while( (!choice.equals("1") && !choice.equals("2")) && (!choice.equals("3") )){
+
+            System.out.println("\n1) Survey\n2) Test\n3) Quit");
             choice = keyboard.nextLine();
             }
 
@@ -46,10 +46,15 @@ public class Start implements Serializable {
             //surveyMenu();
             return 1;
         }
-        else{
+        else if(choice.equals("2")){
             //testMenu();
             return 2;
         }
+        else{
+            exit();
+        }
+            //Should never get here
+            return -1;
 
     }
 
@@ -110,7 +115,7 @@ public class Start implements Serializable {
                     exit(); 
 
                 default:
-                    System.out.println("Invalid Selection. Please select a valid option.");
+                    //System.out.println("Invalid Selection. Please select a valid option.");
                     surveyMenu(); //handle wrong input recall menu
                     break;
             }
@@ -173,7 +178,7 @@ public class Start implements Serializable {
                     exit();
 
                 default:
-                    System.out.println("Invalid Selection. Please select a valid option.");
+                    //System.out.println("Invalid Selection. Please select a valid option.");
                     testMenu(); //handle error recall menu again
                     break;
             }
@@ -249,7 +254,7 @@ public class Start implements Serializable {
             return;
         }
 
-        System.out.println("Loading: " + name);
+        System.out.println("\nLoading: " + name + "...");
 
         //reads inputstream and creates a survey object from .ser file
         try {
@@ -291,14 +296,16 @@ public class Start implements Serializable {
         }
 
         try {
+
+
             //cycle through files make user select which file he wants loaded.
+            System.out.println("");
             for (File file: listOfFiles) {
                 if (file.isFile()) {
                     System.out.println(" " + count + "). " + file.getName());
                     count++;
                 }
             }
-            System.out.println("");
 
         //catch error if happens
         } catch (Exception e) {
@@ -307,7 +314,7 @@ public class Start implements Serializable {
         }
 
         //returns the name of file selected by user,
-        System.out.println("");
+
         try{
         int choice = keyboard.nextInt();
         String name = listOfFiles[choice - 1].getName();
@@ -376,9 +383,9 @@ public class Start implements Serializable {
 
 
         //display name
-        System.out.println("\n********************************");
-        System.out.println("*" + this.current.getType() + " : " + this.current.getName() + "*");
-        System.out.println("********************************\n");
+        System.out.println("\n=========================================");
+        System.out.println("           " + this.current.getType() + " : " + this.current.getName());
+       System.out.println("=========================================\n");
 
         //display the loaded file
         this.current.display();
@@ -415,12 +422,15 @@ public class Start implements Serializable {
         int number;
         Scanner keyboard = new Scanner(System.in);
 
-        System.out.println("What " + type + " do you wish to modify");
+        System.out.println("\nWhat " + type + " do you wish to modify");
         load(type);
         System.out.println("What question do you wish to modify?");
-        System.out.print("Enter existing question.");
+        System.out.print("Enter existing question: ");
 
             try{
+
+                number = keyboard.nextInt();
+                this.current.editQuestion(number);
 
             }
             catch(Exception e){

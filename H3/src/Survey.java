@@ -188,7 +188,25 @@ public class Survey extends Start implements Serializable {
      * Function for next asssingment
      */
     public void editQuestion(int number) {
-        
+        String option, newPrompt;
+
+        Scanner keyboard = new Scanner(System.in);
+
+
+        Question editQ = this.Questions.get(number -1);
+        System.out.println("Do you wish to modify the prompt? ");
+        option = keyboard.nextLine();
+
+
+        if(option.equalsIgnoreCase("y") || option.equalsIgnoreCase("yes") ){
+            System.out.println(editQ.getPrompt());
+
+            System.out.println("Enter a new prompt: ");
+            newPrompt = keyboard.nextLine();
+
+            editQ.setPrompt(newPrompt);
+
+        }
         
     }
 

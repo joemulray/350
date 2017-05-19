@@ -45,7 +45,7 @@ docs:
 	-mkdir docs/
 	$(DOCS) -d ./docs/ $(FILES)
 	
-#remove docs if wanted.
+#remove docs.
 swipe:
 	-rm -rf docs/
 	@echo Removed Docs

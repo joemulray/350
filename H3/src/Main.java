@@ -12,9 +12,9 @@ public class Main implements Serializable{
      */
 	public static void main(String[] args) throws IOException, ClassNotFoundException{
 
-	System.out.println("****************");
-	System.out.println("Welcome");
-    System.out.println("****************");
+	System.out.println("\n=========================================");
+	System.out.println("|                WELCOME                |");
+    System.out.println("=========================================\n");
 
     Start start = new Start();
     int option = start.menu();

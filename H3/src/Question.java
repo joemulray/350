@@ -49,6 +49,7 @@ public abstract class Question implements Serializable {
     public String getPrompt(){return this.prompt;}
     public List<String> getChoices(){ return new ArrayList<String>();}
     public void displayAnswer(){this.answer.display();}
+    public void setPrompt(String prompt){ this.prompt = prompt; }
 
 
 
