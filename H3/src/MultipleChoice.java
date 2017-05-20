@@ -176,4 +176,20 @@ public class MultipleChoice extends Question implements Serializable {
     /*Function for later homework assignment*/
     public void removeChoice(String choice) {}
 
+    public Answers takeAnswer(){
+        
+        this.display();
+
+        Scanner keyboard = new Scanner(System.in);
+        Answers responce = new Answers();
+        String resp;
+
+        resp = keyboard.nextLine();
+
+        responce.setAnswer(resp);
+
+        return responce;
+
+    }
+
 }

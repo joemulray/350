@@ -2,3 +2,6 @@ TODO:
 
 Fix error handling for edit questions.
 Comment code.
+
+Add more error handing
+Allow for multiple answers for multiple choice and other options.

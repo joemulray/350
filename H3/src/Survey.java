@@ -18,6 +18,7 @@ public class Survey extends Start implements Serializable {
     private String name;
     protected ArrayList<Question> Questions = new ArrayList<Question>();
     private Answers answer= new Answers();
+    private ArrayList<Answers> userAnswer = new ArrayList<Answers>();
     protected String type;
 
 
@@ -112,9 +113,9 @@ public class Survey extends Start implements Serializable {
         if(getName() == null){
         setName();
 
-        System.out.println("\n****************");
-        System.out.println(this.type + " : " +  this.name);
-        System.out.println("****************");
+        System.out.println("\n=========================================");
+        System.out.println("           " +this.type + " : " +  this.name);
+        System.out.println("=========================================\n");
         }
 
 
@@ -149,7 +150,7 @@ public class Survey extends Start implements Serializable {
 
     public void setName(){
         Scanner keyboard = new Scanner(System.in);
-        System.out.println("\nEnter name for " + this.type + ":");
+        System.out.print("\nEnter name for " + this.type + ": ");
         this.name = keyboard.nextLine();
     }
 
@@ -188,39 +189,79 @@ public class Survey extends Start implements Serializable {
      * Function for next asssingment
      */
     public void editQuestion(int number) {
-        String option, newPrompt;
+            String option, newPrompt;
 
-        Scanner keyboard = new Scanner(System.in);
-
-
-        Question editQ = this.Questions.get(number -1);
-        System.out.println("Do you wish to modify the prompt? ");
-        option = keyboard.nextLine();
+            Scanner keyboard = new Scanner(System.in);
 
 
-        if(option.equalsIgnoreCase("y") || option.equalsIgnoreCase("yes") ){
-            System.out.println(editQ.getPrompt());
-
-            System.out.println("Enter a new prompt: ");
-            newPrompt = keyboard.nextLine();
-
-            editQ.setPrompt(newPrompt);
-
-        }
-
-
-        if(editQ.getSelf().equals("MultipleChoice")){
-        System.out.println("Do you wish to modify the choices? ");
+            Question editQ = this.Questions.get(number -1);
+            System.out.println("Do you wish to modify the prompt? ");
             option = keyboard.nextLine();
 
-        if(option.equalsIgnoreCase("y") || option.equalsIgnoreCase("yes") ){
-                
-            editQ.editChoices();
+
+            if(option.equalsIgnoreCase("y") || option.equalsIgnoreCase("yes") ){
+                System.out.println(editQ.getPrompt());
+
+                System.out.println("Enter a new prompt: ");
+                newPrompt = keyboard.nextLine();
+
+                editQ.setPrompt(newPrompt);
 
             }
-        }
+
+            //if question is multiple choice prompt modify the choices
+            if(editQ.getSelf().equals("MultipleChoice")){
+            System.out.println("\nDo you wish to modify the choices? ");
+                option = keyboard.nextLine();
+
+            if(option.equalsIgnoreCase("y") || option.equalsIgnoreCase("yes") ){
+                    
+                editQ.editChoices();
+
+                }
+            }
+
+            //if the type is a test. prompt change correct answer.
+            if(this.type.equals("Test")){
+                System.out.println("\nDo you wish to modify the correct answer? ");
+                    option = keyboard.nextLine();
+
+            if(option.equalsIgnoreCase("y") || option.equalsIgnoreCase("yes") ){
+
+                editQ.createAnswer();
+                }
+
+            }        
+
         
-    }
+        }
+
+        public void take(){
+
+        Scanner keyboard = new Scanner(System.in);
+        String userAnswer;
+        int count = 1;
+        Answers responce;
+        System.out.println("\n");
+
+
+        for (Question question: Questions) {
+
+            //creating variables for new questions
+
+            System.out.println(count + ")");
+            responce = question.takeAnswer();    
+    
+
+            //create answer add it to arraylist of survey or test.
+            this.userAnswer.add(responce);
+
+
+            System.out.println("\n");
+            count ++; 
+
+        } 
+        }
 
 
 }

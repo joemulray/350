@@ -102,4 +102,25 @@ public class Ranking extends Matching implements Serializable {
         }
     }
 
+
+    @Override
+    public Answers takeAnswer(){
+    
+        this.display();
+
+        Answers responce = new Answers();
+        int count = 1;
+        Scanner keyboard = new Scanner(System.in);
+        String resp;
+
+        for(String choice : this.getChoices()){
+            System.out.print(count + ") " + choice + " : ");
+            resp = keyboard.nextLine(); 
+            responce.setAnswer(resp);
+            count ++;
+        }
+
+        return responce;
+    }
+
 }

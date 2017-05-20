@@ -25,7 +25,7 @@ public class TF extends MultipleChoice implements Serializable {
 	Scanner keyboard = new Scanner(System.in);	
 
 
-	System.out.println("Enter your prompt or True False Question:");
+	System.out.println("\nEnter your prompt or True False Question:");
 	prompt = keyboard.nextLine();
 
     //add only two available choices to list already know two choices.
@@ -72,5 +72,20 @@ public class TF extends MultipleChoice implements Serializable {
         }
     }
 
+    @Override
+    public Answers takeAnswer(){
+        
+        this.display();
 
+        Scanner keyboard = new Scanner(System.in);
+        Answers responce = new Answers();
+        String resp;
+
+        resp = keyboard.nextLine();
+
+        responce.setAnswer(resp);
+
+        return responce;
+
+    }
 }

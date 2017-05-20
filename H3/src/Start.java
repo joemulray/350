@@ -104,7 +104,7 @@ public class Start implements Serializable {
                     break;
 
                 case "6":
-                    takeSurvey(); //take a survey
+                    take("Survey"); //take a survey
                     break;
 
                 case "7":
@@ -162,7 +162,7 @@ public class Start implements Serializable {
                     break;
 
                 case "6":
-                    takeTest(); //take a test
+                    take("Test"); //take a test
                     break;
 
                 case "7":
@@ -411,17 +411,20 @@ public class Start implements Serializable {
      * @param String Survey 
      * @return null
      */
-    public void takeSurvey() {
-        // TODO implement here
-    }
+    public void take(String type) throws IOException, ClassNotFoundException{
+        Scanner keyboard = new Scanner(System.in);
 
+        System.out.println("\nWhat " + type + " do you wish to take?");
+        load(type);
 
-    /**
-     * @param String Test 
-     * @return null
-     */
-    public void takeTest() {
-        // TODO implement here
+        //error handle just in case could not load serialization file.
+        if(this.current == null)
+            return ;
+
+        //take the current survey or test loaded.
+
+        this.current.take();
+
     }
 
     public void tabulate(){

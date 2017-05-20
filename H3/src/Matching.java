@@ -103,13 +103,40 @@ public class Matching extends Question implements Serializable {
     public void display(){
         //display matching question
         int count=0;
+        char letter = 'A';
         List<String> choice = getChoices();
         System.out.println(getPrompt());
 
+
         //Stored into arraylist so printing should only be half size of array.
         for(int index = 1; index <= choice.size()/2; index++ ){
-            System.out.println(" " + index + "). " + choice.get(count) + "\t" + choice.get(count+1));
+            System.out.println(" " + letter + ".) " + choice.get(count) + "\t" +
+            index + ".)" + choice.get(count+1));
             count+=2;
+            letter++;
         }
+    }
+
+
+    public Answers takeAnswer(){
+    
+        this.display();
+        
+        System.out.println("\n");
+        Answers responce = new Answers();
+        Scanner keyboard = new Scanner(System.in);
+        String resp;
+        char letter = 'A';
+        List<String> choice = getChoices();
+
+        for(int index = 1; index <= choice.size()/2; index++ ){
+            System.out.print(letter + ".) ");
+            resp = keyboard.nextLine();
+
+            letter ++;
+            responce.setAnswer(resp);
+        }
+
+        return responce;
     }
 }

@@ -39,7 +39,7 @@ public abstract class Question implements Serializable {
     public abstract void createAnswer();
     public abstract void create();
     public abstract void display();
-
+    public abstract Answers takeAnswer();
     /**
      * General functions used by child classes, and start
      * to retrieve/set information.
@@ -50,12 +50,13 @@ public abstract class Question implements Serializable {
     public List<String> getChoices(){ return new ArrayList<String>();}
     public void displayAnswer(){this.answer.display();}
     public void setPrompt(String prompt){ this.prompt = prompt; }
-    public void editChoices(){}
-    public String getSelf(){ return this.self; }
+
 
     //Functions to impliment for a later homework.
     public String getQuestion() {return "";}
     public void setQuestion(String question) {}
     public void addQuestion(){}
     public Answers getAnswer(){return this.answer;}
+    public void editChoices(){};
+    public String getSelf(){return this.self;}
 }
