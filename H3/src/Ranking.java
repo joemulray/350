@@ -37,9 +37,11 @@ public class Ranking extends Matching implements Serializable {
     public void create(){
 	Scanner keyboard = new Scanner(System.in);
 	
+    //get prompt from user
 	System.out.println("\nEnter the prompt or your ranking question:");
 	this.prompt = keyboard.nextLine();
-	
+	   
+    //get number of choices from user
 	System.out.println("\nEnter the number of choices for your ranking question:");
     try{
 	this.numChoices = keyboard.nextInt();
@@ -50,7 +52,7 @@ public class Ranking extends Matching implements Serializable {
     }
 	keyboard.nextLine();	
 	
-
+    //from each number of choices get specific prompt
 	for(int index = 1; index <= numChoices; index++){
 
 		String option;
@@ -107,17 +109,22 @@ public class Ranking extends Matching implements Serializable {
         }
     }
 
-
+    /**
+     * Function to take a Ranking answer
+     * @return Answers returns answer object
+     */
     @Override
     public Answers takeAnswer(){
     
         this.display();
 
+        //declaring variables
         Answers responce = new Answers();
         char letter = 'A';
         Scanner keyboard = new Scanner(System.in);
         String resp;
 
+        //for each choice get answer from user
         System.out.println("");
         for(String choice : this.getChoices()){
             System.out.print(letter + ".) " + choice + " : ");

@@ -402,10 +402,9 @@ public class Start implements Serializable {
 
 
 
-    /*FUNCTIONS BELOW FOR LATER IMPLIMENTATION*/
-
     /**
-     *
+     * @throws IOException
+     * @throws ClassNotFoundException
      * @param String Survey 
      * @return null
      */
@@ -432,17 +431,27 @@ public class Start implements Serializable {
 
     }
 
+    /**
+    * Function to tabulate a Survey or Test
+    * uses current test or survey, not loaded.
+    */
     public void tabulate(){
-
+        
+        //check there is a current SOT available
         if(this.current == null){
              System.out.println("\nPlease create/load a survey or test before tabulating.");
              return;
         }
 
+        //call tabulate
         this.current.tabulate();
     }
 
 
+    /**
+    * Function to grade a test 
+    * uses current test not loaded.
+    */
     public void gradeTest(){
 
         //Grade current test loaded. if none return
@@ -454,7 +463,11 @@ public class Start implements Serializable {
 
     }
 
-
+    /**
+     * Function to edit a Test or Survey
+     * @throws IOException
+     * @throws ClassNotFoundException
+     */
     public void edit(String type)throws IOException, ClassNotFoundException {
     
     int number;
@@ -472,8 +485,7 @@ public class Start implements Serializable {
     System.out.println("\nWhat question do you wish to modify?");
     System.out.print("Enter existing question: ");
 
-    //handling invalid input
-
+        //handling invalid input
         try{
             number = keyboard.nextInt();
             this.current.editQuestion(number);

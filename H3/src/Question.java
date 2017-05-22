@@ -51,8 +51,6 @@ public abstract class Question implements Serializable {
     public void displayAnswer(){this.answer.display();}
     public void setPrompt(String prompt){ this.prompt = prompt; }
 
-
-    //Functions to impliment for a later homework.
     public String getQuestion() {return "";}
     public void setQuestion(String question) {}
     public void addQuestion(){}

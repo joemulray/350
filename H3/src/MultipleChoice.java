@@ -114,6 +114,7 @@ public class MultipleChoice extends Question implements Serializable {
         String resp;
         Scanner keyboard = new Scanner(System.in);
         Answers answer = new Answers();
+        char letter = 'A';
 
         System.out.println("\nEnter the correct Answer for your MultipleChoice Question?:");
         
@@ -123,10 +124,20 @@ public class MultipleChoice extends Question implements Serializable {
             count++;
         }
 
+        System.out.println("");
+        if(number > 1){
+            for(int index = 0; index < number ; index ++){
+            System.out.print(letter + ".) ");
+            resp = keyboard.nextLine();
+            answer.setAnswer(resp);
+            letter ++;
+            }
+        }
+        else{
 
-        resp = keyboard.nextLine();
-        answer.setAnswer(resp);
-
+            resp = keyboard.nextLine();
+            answer.setAnswer(resp);
+        }
         //set attribute to question
         this.answer = answer;
     }
@@ -150,7 +161,9 @@ public class MultipleChoice extends Question implements Serializable {
 
     }
 
-    //function to edit choices for a multiple choice question
+    /**
+     * Function to edit choices for a multiple choice question
+     */
     @Override
     public void editChoices(){
 
@@ -166,6 +179,7 @@ public class MultipleChoice extends Question implements Serializable {
 
         System.out.print("\nEnter choice: ");
         try{
+            //try to get user input
             number = keyboard.nextInt();
             keyboard.nextLine();
             newChoice = keyboard.nextLine();
@@ -174,26 +188,31 @@ public class MultipleChoice extends Question implements Serializable {
 
         }
         catch(Exception e){
-            editChoices();
+            editChoices(); //recall editchocies on error
         }
 
     }
 
-    /*Function for later homework assignment*/
-    public void removeChoice(String choice) {}
 
+    /**
+     * Function to take a MC answer
+     * gets the prompt and prompts input for answer
+     */
     public Answers takeAnswer(){
-        
+            
+        //display prompt
         this.display();
 
         Scanner keyboard = new Scanner(System.in);
         Answers responce = new Answers();
         String resp;
         char letter = 'A';
+
+        //differnt menu if more then one option
         if(this.number > 1){
 
             System.out.println("");
-
+            //for each number of answers get input
             for(int index = 0; index < this.number; index ++){
             System.out.print(letter + ".) ");
             resp = keyboard.nextLine();
@@ -202,7 +221,7 @@ public class MultipleChoice extends Question implements Serializable {
             }
         }
         else{
-
+            //get input
             resp = keyboard.nextLine();
             responce.setAnswer(resp);
         }

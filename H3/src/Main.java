@@ -9,6 +9,8 @@ public class Main implements Serializable{
     /**
      * Main function creates new Starting process, 
      * continues til user quits the program.
+     * @throws IOException
+     * @throws ClassNotFoundException
      */
 	public static void main(String[] args) throws IOException, ClassNotFoundException{
 

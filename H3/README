@@ -1,29 +1,24 @@
 Joseph Mulray
-CS 350
+CS 350 Homework 1 Part 3
 May 18 2017
 
-Makefile commands:
+Did not come across any issues when running. I included two files this time each with every question, and have taken them multiple times.
+I also noted some of the functionalitys below such as functions that load files, others that use the current file loaded. Main Class: Main.java, calls Start.java has most of the functionality with creating Surveys, and Tests. `cd` into the src folder and run make. Put a copy of this README in there also.
+
+
+Modify: Loads a file that was already created, after making changes you need to save for them to be noted in other functions, will not save automatically.
+Tabulate: uses current file so you load the file you want.
+Take: Loads a file that was created.
+Grade: uses current file, so take test first then call grade.
+
+> PATHS:
+src/ : holds all source code, and makefile also a copy of this readme
+ser/ : hold all serialization files, Tests stored in ser/Test/ directory and Surveys stored in ser/Survey/
+
+> Makefile commands:
 
 run : can run make build and compile
 view : view all source code
 clean : remove all class files and main jar file
 docs : generate javadoc files
 remove : remove all serialization files
-swipe : remove javadoc generated files
-
-
-Main Class: Main.java  - calls Start.java has most of the functionality with creating Surveys, and Tests.
-
-Modify: Loads a file that was already created, after making changes you need to save for them to be noted in other functions, will not save automatically.
-
-Tabulate: uses current file so you load the file you want.
-
-Take: Loads a file that was created.
-Grade: uses current file, so take test first then call grade.
-
-
-
-PATHS:
-src/ : holds all source code, and makefile also a copy of this readme
-ser/ : hold all serialization files, Tests stored in ser/Test/ directory and Surveys stored in ser/Survey/
-

@@ -21,7 +21,6 @@ public class Essay extends Question implements Serializable {
     }
 
 
-
     /**
      * @param len  Setter if wanted to change
      * length of essay.
@@ -29,6 +28,8 @@ public class Essay extends Question implements Serializable {
     public void setLength(String len) {
        this.length = len;
     }
+
+
 
     /**
      * @return length of Essays
@@ -38,19 +39,24 @@ public class Essay extends Question implements Serializable {
         return this.length;
     }
 
+
+
     /**
      * Function to create an essay
      * gets the prompt from user and length requirment if any.
      */
     public void create(){
 
+        //get user input
         Scanner keyboard = new Scanner(System.in);
         System.out.println("\nEnter prompt or your Essay question:");
         this.prompt = keyboard.nextLine();
 
+        //get length of essay
         System.out.println("Enter Essay Length:");
         this.length = keyboard.nextLine();
 
+        //get number of answers from user.
         System.out.println("How many answers to your questiion.");
         try{
             this.number = keyboard.nextInt();
@@ -63,7 +69,6 @@ public class Essay extends Question implements Serializable {
             this.number = 1;
         }
 
-
     }
 
 
@@ -72,18 +77,18 @@ public class Essay extends Question implements Serializable {
      * gets the prompt from user and length requirment if any.
      */
     public void createAnswer(){
+
+        //create new answer for essay question
         String resp;
         Scanner keyboard = new Scanner(System.in);
         Answers answer = new Answers();
 
-        //System.out.println("Enter the correct Answer for your Essay Question?:");
         System.out.println("\nEssay Questions will require Grading.");
 
-        //resp = keyboard.nextLine();
-        //answer.setAnswer(resp);
 
         this.answer = answer;
     }
+
 
     /**
      * Function to display an essay
@@ -95,15 +100,22 @@ public class Essay extends Question implements Serializable {
         System.out.println(" Length: " + getLength() + "\n");
     }
 
+
+    /**
+     * Function to create an Essay answer
+     * @return Answers returns answer object from user input
+     */
     public Answers takeAnswer(){
         
         this.display();
 
+        //declaring variables for input
         Scanner keyboard = new Scanner(System.in);
         Answers responce = new Answers();
         String resp;
         char letter = 'A';
 
+        //displaying different prompt for different number of answers required
        if(this.number > 1){
 
             for(int index = 0; index < this.number; index ++){
@@ -114,11 +126,12 @@ public class Essay extends Question implements Serializable {
             }
         }
         else{
-            
+            //else get regular input
             resp = keyboard.nextLine();
             responce.setAnswer(resp);
         }
-        
+
+        //return the answer
         return responce;
 
     }

@@ -230,7 +230,9 @@ public class Survey extends Start implements Serializable {
         
         }
 
-
+        /**
+        * Function to allow grading of tests
+        */
         public void grade(){}
 
         public void take(){
@@ -265,6 +267,9 @@ public class Survey extends Start implements Serializable {
         allTaken.add(userAnswer);
         }
 
+        /**
+        * Function to tabulate a test or Survey
+        */
         public void tabulate(){
 
             //if there are no responces, just return
@@ -325,6 +330,10 @@ public class Survey extends Start implements Serializable {
 
         }
 
+
+        /**
+        * Function to displayName
+        */
         public void displayName(){
 
         System.out.println("\n=========================================");

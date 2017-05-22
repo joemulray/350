@@ -29,10 +29,12 @@ public class ShortAnswer extends Essay implements Serializable {
         System.out.println("\nEnter prompt or your Short Answer question:");
         this.prompt = keyboard.nextLine();
 
+        //gets length from user
         System.out.println("Enter Short Answer Length:");
         this.length = keyboard.nextLine();
 
 
+        //get input from user on number of quesitons
         System.out.println("How many answers to your questiion.");
         try{
             this.number = keyboard.nextInt();
@@ -53,10 +55,13 @@ public class ShortAnswer extends Essay implements Serializable {
      */
     @Override
     public void createAnswer(){
+
+        //get user input from scanner 
         String resp;
         Scanner keyboard = new Scanner(System.in);
         Answers answer = new Answers();
 
+        //short answer needs grading no input on asnwer
         System.out.println("\nShort Answer Questions will require Grading.");
 
         this.answer = answer;

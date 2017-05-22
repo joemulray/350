@@ -89,7 +89,7 @@ public class Matching extends Question implements Serializable {
         //for each choice available only get maching answer values from right side.
         System.out.println("");
         for(int index=1; index<= (tempChoice.size() /2); index++){
-            System.out.print(letter + "). ");
+            System.out.print(letter + ".) ");
             resp = keyboard.nextLine();
             answer.setAnswer(resp);
             letter++;
@@ -119,7 +119,10 @@ public class Matching extends Question implements Serializable {
         }
     }
 
-
+    /**
+     * Function to take a Answer for matching class
+     * @return Answers return answer object.
+     */
     public Answers takeAnswer(){
     
         this.display();
@@ -129,8 +132,11 @@ public class Matching extends Question implements Serializable {
         Scanner keyboard = new Scanner(System.in);
         String resp;
         char letter = 'A';
+
+        //store choices in temp holding
         List<String> choice = getChoices();
 
+        //for each choice get input
         for(int index = 1; index <= choice.size()/2; index++ ){
             System.out.print(letter + ".) ");
             resp = keyboard.nextLine();
