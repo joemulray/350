@@ -11,6 +11,7 @@ public class Essay extends Question implements Serializable {
      */
     protected String length;
     private static final double serialVersionUID = -1L;
+    protected int number;
 
     /**
      * Default constructor
@@ -50,6 +51,19 @@ public class Essay extends Question implements Serializable {
         System.out.println("Enter Essay Length:");
         this.length = keyboard.nextLine();
 
+        System.out.println("How many answers to your questiion.");
+        try{
+            this.number = keyboard.nextInt();
+            while(this.number < 0){
+                System.out.println("Please enter a valid number of choices.");
+                this.number = keyboard.nextInt();
+            }
+        }
+        catch(Exception e){
+            this.number = 1;
+        }
+
+
     }
 
 
@@ -62,10 +76,11 @@ public class Essay extends Question implements Serializable {
         Scanner keyboard = new Scanner(System.in);
         Answers answer = new Answers();
 
-        System.out.println("Enter the correct Answer for your Essay Question?:");
+        //System.out.println("Enter the correct Answer for your Essay Question?:");
+        System.out.println("\nEssay Questions will require Grading.");
 
-        resp = keyboard.nextLine();
-        answer.setAnswer(resp);
+        //resp = keyboard.nextLine();
+        //answer.setAnswer(resp);
 
         this.answer = answer;
     }
@@ -87,11 +102,23 @@ public class Essay extends Question implements Serializable {
         Scanner keyboard = new Scanner(System.in);
         Answers responce = new Answers();
         String resp;
+        char letter = 'A';
 
-        resp = keyboard.nextLine();
+       if(this.number > 1){
 
-        responce.setAnswer(resp);
-
+            for(int index = 0; index < this.number; index ++){
+            System.out.println(letter + ".)");
+            resp = keyboard.nextLine();
+            responce.setAnswer(resp);
+            letter++;
+            }
+        }
+        else{
+            
+            resp = keyboard.nextLine();
+            responce.setAnswer(resp);
+        }
+        
         return responce;
 
     }

@@ -29,7 +29,7 @@ public class Matching extends Question implements Serializable {
 
         //check if prompt is already set
         if(this.prompt == null){
-        System.out.println("Enter your Matching prompt or question");
+        System.out.println("\nEnter your Matching prompt or question");
         this.prompt = keyboard.nextLine();
         }
 
@@ -77,6 +77,7 @@ public class Matching extends Question implements Serializable {
     public void createAnswer(){
         
         //create new answer object and set vaues.
+        char letter = 'A';
         Answers answer = new Answers();
         Scanner keyboard = new Scanner(System.in);
         String resp;
@@ -88,9 +89,10 @@ public class Matching extends Question implements Serializable {
         //for each choice available only get maching answer values from right side.
         System.out.println("");
         for(int index=1; index<= (tempChoice.size() /2); index++){
-            System.out.print(index + "). ");
+            System.out.print(letter + "). ");
             resp = keyboard.nextLine();
             answer.setAnswer(resp);
+            letter++;
         }
 
         this.answer = answer;

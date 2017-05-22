@@ -14,7 +14,7 @@ public class Test extends Survey  implements Serializable{
     public Test() {}
 
     //AnswerSheet variable
-    public Answers answerSheet = new Answers();
+    private ArrayList<Answers> AnswerSheet = new ArrayList<Answers>();
 
 
     /**
@@ -90,7 +90,6 @@ public class Test extends Survey  implements Serializable{
 
         default:
             //handle unwanted input
-            System.out.println("\nSelect a valid Option.");
             addQuestion();
             break;
         }
@@ -109,7 +108,8 @@ public class Test extends Survey  implements Serializable{
             question.display();
             
             //if test get correct answer
-            System.out.println("The correct answer is:"); 
+
+            System.out.println("\n The correct answer is:"); 
             question.displayAnswer();
 
             count ++;
@@ -118,11 +118,90 @@ public class Test extends Survey  implements Serializable{
 
     }
 
+    public void grade(){
+
+        //for each quesiton compare user answer and answer of answersheet
+        createAnwerSheet();
+
+        if(allTaken.size() == 0){
+            System.out.println("\nNo responces for this Test.");
+            return;
+        }
+
+        //count number of correct answers 
+        int numCorrect = 0;
+        int numWrong = 0;
+        int total;
+        int count = 1;
+
+        /*get the last responce from user, basically grading last test taken
+        after take is called saves responce.*/
+        ArrayList<Answers> userAnswer = allTaken.get(allTaken.size() -1);
+
+        displayName();
+
+        //for each correct answer on answersheet
+        for(int index = 0; index < AnswerSheet.size(); index++){
+
+            boolean isCorrect = true;
+            Answers user = userAnswer.get(index);
+            Answers correct = AnswerSheet.get(index);
+            Question currentQ = Questions.get(index);
+
+            List<String> correctAnswers = correct.getAnswer();
+            List<String> usersA = user.getAnswer();
+
+            System.out.println(count + ")");
+            currentQ.display();
+            System.out.println("\n The correct answer is:"); 
+            currentQ.displayAnswer();
+            System.out.println("\n Your Answer: ");
+            user.display();
+
+            if(correctAnswers.size() > 0){
+            for(int pos = 0; pos < correct.getAnswer().size(); pos++){
+
+                //no partial credit if one of the answers if wrong entire question is wrong
+                    if(!correctAnswers.get(pos).equals(usersA.get(pos))){
+                        isCorrect = false;
+                    }
+            
+            }
+
+                if(isCorrect)
+                    numCorrect++;
+                else
+                    numWrong++;
+                }
+
+                count++;
+                System.out.println("\n");
+
+            }
+
+            total = numCorrect + numWrong;
+            System.out.println("Grade: " +  ( ((float) numCorrect) /total)*100 + "  " + numCorrect + "/" + total);
+            System.out.println("Correct:" + numCorrect);
+            System.out.println("Wrong:" + numWrong);
+
+    }
+
+
     /**
      * @return
      */
 
     //For later assingments function.
-    public void createAnwerSheet(){}
+    public void createAnwerSheet(){
+
+        //might have to change this if edit correct answer dont think it will update
+
+        if(this.AnswerSheet.size() == 0)
+        for (Question q : Questions){
+            this.AnswerSheet.add(q.getAnswer());
+        }
+    }
+
+
 
 }

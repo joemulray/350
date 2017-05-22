@@ -291,7 +291,7 @@ public class Start implements Serializable {
 
         //if no files are in folder 
         if (listOfFiles.length == 0) {
-            System.out.print("No input files found. ");
+            System.out.print("\nNo input files found. ");
             return null;
         }
 
@@ -383,9 +383,7 @@ public class Start implements Serializable {
 
 
         //display name
-        System.out.println("\n=========================================");
-        System.out.println("           " + this.current.getType() + " : " + this.current.getName());
-       System.out.println("=========================================\n");
+        this.current.displayName();
 
         //display the loaded file
         this.current.display();
@@ -423,16 +421,36 @@ public class Start implements Serializable {
 
         //take the current survey or test loaded.
 
+        this.current.displayName();
+
         this.current.take();
+        
+        //save survey or test after take
+        System.out.println("Saving your " + type + " results.");
+        save();
+
 
     }
 
     public void tabulate(){
 
+        if(this.current == null){
+             System.out.println("\nPlease create/load a survey or test before tabulating.");
+             return;
+        }
+
+        this.current.tabulate();
     }
 
 
     public void gradeTest(){
+
+        //Grade current test loaded. if none return
+         if(this.current == null)
+            return ;
+
+        //call grade for test.
+        this.current.grade();
 
     }
 
@@ -441,27 +459,30 @@ public class Start implements Serializable {
     
     int number;
     Scanner keyboard = new Scanner(System.in);
-    boolean isTrue = true;
     
+    //load the files from user for editing
     System.out.println("\nWhat " + type + " do you wish to modify");
     load(type);
 
+    //if fails on loading return
+    if(this.current == null){
+        return ;
+    }
 
     System.out.println("\nWhat question do you wish to modify?");
     System.out.print("Enter existing question: ");
 
-    while(isTrue){
+    //handling invalid input
 
         try{
             number = keyboard.nextInt();
             this.current.editQuestion(number);
-            isTrue = false;
-
         }
         catch(Exception e){
-             System.out.print("Enter existing question: ");
+            System.out.print("Enter existing question: ");
+            number = keyboard.nextInt();
+            this.current.editQuestion(number);
         }
-    }
 }
 
 }

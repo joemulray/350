@@ -14,6 +14,13 @@ swipe : remove javadoc generated files
 
 Main Class: Main.java  - calls Start.java has most of the functionality with creating Surveys, and Tests.
 
+Modify: Loads a file that was already created, after making changes you need to save for them to be noted in other functions, will not save automatically.
+
+Tabulate: uses current file so you load the file you want.
+
+Take: Loads a file that was created.
+Grade: uses current file, so take test first then call grade.
+
 
 
 PATHS:

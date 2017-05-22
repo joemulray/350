@@ -10,6 +10,8 @@ public class ShortAnswer extends Essay implements Serializable {
     /**
      * Default constructor
      */
+
+
     public ShortAnswer() {
         this.self = "ShortAnswer";
     }
@@ -30,6 +32,19 @@ public class ShortAnswer extends Essay implements Serializable {
         System.out.println("Enter Short Answer Length:");
         this.length = keyboard.nextLine();
 
+
+        System.out.println("How many answers to your questiion.");
+        try{
+            this.number = keyboard.nextInt();
+            while(this.number < 0){
+                System.out.println("Please enter a valid number of choices.");
+                this.number = keyboard.nextInt();
+            }
+        }
+        catch(Exception e){
+            this.number = 1;
+        }
+
     }
 
     /**
@@ -42,11 +57,7 @@ public class ShortAnswer extends Essay implements Serializable {
         Scanner keyboard = new Scanner(System.in);
         Answers answer = new Answers();
 
-        System.out.println("Enter the correct Answer for your Short Answer Question?:");
-
-        //get responce from user, add answer to question.
-        resp = keyboard.nextLine();
-        answer.setAnswer(resp);
+        System.out.println("\nShort Answer Questions will require Grading.");
 
         this.answer = answer;
     }

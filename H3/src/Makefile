@@ -24,7 +24,7 @@ FILES = Answers.java \
 	
 
 #main jar file used.
-MAIN = Survey.jar
+MAIN = H3.jar
 
 
 .PHONY: run view clean

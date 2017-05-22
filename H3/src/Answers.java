@@ -42,10 +42,11 @@ public class Answers implements Serializable{
 
         if(this.answer.size() > 0){
             for(String correct : answer){
-                System.out.println(correct);
+                System.out.println(" " + correct);
             }
-
         }
+        else
+            System.out.println("Question will need Grading.");
     }
 
 }

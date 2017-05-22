@@ -15,12 +15,10 @@ public class Survey extends Start implements Serializable {
      * survey variables needed for storing question and name
      */
     private static final double serialVersionUID = -1L;
-    private String name;
+    protected String name;
     protected ArrayList<Question> Questions = new ArrayList<Question>();
-    private Answers answer= new Answers();
-    private ArrayList<Answers> userAnswer = new ArrayList<Answers>();
     protected String type;
-
+    protected ArrayList<ArrayList<Answers>> allTaken = new ArrayList<ArrayList<Answers>>();
 
 
     /**
@@ -87,7 +85,6 @@ public class Survey extends Start implements Serializable {
 
         default:
             //handle wrong input from user.
-            System.out.println("\nSelect a valid Option.");
             addQuestion();
             break;
         }
@@ -113,14 +110,12 @@ public class Survey extends Start implements Serializable {
         if(getName() == null){
         setName();
 
-        System.out.println("\n=========================================");
-        System.out.println("           " +this.type + " : " +  this.name);
-        System.out.println("=========================================\n");
+        displayName();
         }
 
 
         System.out.println("\nHow many Questions would you like to have in for your "
-            + this.type + "?:");
+            + this.type + "?");
 
         //for each question call addQuestion
         try{
@@ -156,15 +151,12 @@ public class Survey extends Start implements Serializable {
 
     public String getName(){return this.name;}
 
+    
     public void exit(){
         System.out.println("Exiting....");
         System.exit(0);
     }
 
-    
-    /*FUNCTIONS BELOW FOR LATER IMPLIMENTATION*/
-    public void record(String answer) {
-    }
 
     /**
      * @return null
@@ -172,8 +164,10 @@ public class Survey extends Start implements Serializable {
     public void display() {
 
         int count = 1;
+        //for each question call questions display function
         for (Question question: Questions) {
 
+            //keep count of question numbers
             System.out.println(count + ")");
             question.display();
             
@@ -236,15 +230,20 @@ public class Survey extends Start implements Serializable {
         
         }
 
+
+        public void grade(){}
+
         public void take(){
 
+        //create list of users answers
+        ArrayList<Answers> userAnswer = new ArrayList<Answers>();
         Scanner keyboard = new Scanner(System.in);
-        String userAnswer;
         int count = 1;
         Answers responce;
         System.out.println("\n");
 
 
+        //for each question get answer
         for (Question question: Questions) {
 
             //creating variables for new questions
@@ -254,13 +253,84 @@ public class Survey extends Start implements Serializable {
     
 
             //create answer add it to arraylist of survey or test.
-            this.userAnswer.add(responce);
+            userAnswer.add(responce);
 
 
             System.out.println("\n");
             count ++; 
 
-        } 
+        }
+
+        //add the arraylist to list of responces for survey
+        allTaken.add(userAnswer);
+        }
+
+        public void tabulate(){
+
+            //if there are no responces, just return
+            if(allTaken.size() == 0){
+                System.out.println("\nNo responces for this Test.");
+                return;
+            }
+
+            displayName();
+            //print number of responces taken for the test or survey
+            System.out.println("NUMBER OF RESPONCES: " + allTaken.size() + "\n");
+            int count = 1;
+            //for each question in the SOT
+            for(int index = 0; index < Questions.size(); index++){  
+
+                System.out.println(count + ".) ");
+                Questions.get(index).display();
+                System.out.println("");
+            
+                //use hashmap to store answers as key and int as number of appearances.
+                HashMap<List<String>, Integer> hmap = new HashMap<List<String>, Integer>(); 
+
+                //for each list of answers in the responces
+                for(ArrayList<Answers> savedResponces : allTaken){
+
+                        List<String> temp = savedResponces.get(index).getAnswer();
+
+                        //check if hashmap already contains the key if it does add one to index
+                        if(hmap.containsKey(temp)){
+
+                            //add one to index otherwise just set as one
+                            Integer number = hmap.get(temp) + 1;
+                            hmap.put(temp, number);
+
+                        }
+                        else
+                        hmap.put(temp, 1);
+
+                }
+
+                //cycle through the hashmap of answers for current question
+                for (Map.Entry<List<String> ,Integer> entry : hmap.entrySet()) {
+
+                  //get the key and value informations
+                  List<String> key = entry.getKey();
+                  Integer value = entry.getValue();
+
+                  //display the keys and values
+                  System.out.print(" " + key + " ");
+                  System.out.println(": " + value);
+
+                }
+
+                System.out.println("\n");
+                count++;
+
+            }
+
+        }
+
+        public void displayName(){
+
+        System.out.println("\n=========================================");
+        System.out.println("           " +this.type + " : " +  this.name);
+        System.out.println("=========================================\n");
+
         }
 
 

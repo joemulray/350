@@ -13,6 +13,8 @@ public class MultipleChoice extends Question implements Serializable {
     protected List<String> choices = new ArrayList<String>();
     protected int numChoices;
     private static final double serialVersionUID = -1L;
+    private int numAnswers;
+    private int number;
 
     /**
      * Default constructor
@@ -29,12 +31,11 @@ public class MultipleChoice extends Question implements Serializable {
     public void addChoice() {
     Scanner keyboard = new Scanner(System.in);
 
-
     System.out.println("Enter the number of choices you would like to add to your MC Quesiton:");
-    this.numChoices = keyboard.nextInt();
 
-    keyboard.nextLine();
-
+    try{
+        this.numChoices = keyboard.nextInt();
+        keyboard.nextLine();
     //cycle through number of choices, add new options.
     for(int index = 1; index <= numChoices; index++){
 
@@ -43,10 +44,16 @@ public class MultipleChoice extends Question implements Serializable {
         option = keyboard.nextLine();
         
         this.choices.add(option);
-    
+        
         }
-       
-    }
+
+        System.out.println("How many answers to your questiion.");
+            this.number = keyboard.nextInt();
+            }
+        catch(Exception e){
+            create();
+            }
+        }
 
     /**
      * Function to create an Multiple Choice quesiton
@@ -62,30 +69,29 @@ public class MultipleChoice extends Question implements Serializable {
 	this.prompt = keyboard.nextLine();
     }   
 
+        System.out.println("\nEnter the number of choices for your Mutiple Choice question:");
+    	try{
 
-	try{
+    	this.numChoices = keyboard.nextInt();
+        keyboard.nextLine();
 
-	System.out.println("\nEnter the number of choices for your Mutiple Choice question:");
-	this.numChoices = keyboard.nextInt();
+        //cycle through nunber of choices get responce for each question.
+    	for(int index = 1; index <= numChoices; index++){
 
-    keyboard.nextLine();
+    		String option;
+    		System.out.println("Enter choice #" + index + ": ");
+    		option = keyboard.nextLine();
+    		
+    		this.choices.add(option);
+    	   }
 
-    //cycle through nunber of choices get responce for each question.
-	for(int index = 1; index <= numChoices; index++){
-
-		String option;
-		System.out.println("Enter choice #" + index + ": ");
-		option = keyboard.nextLine();
-		
-		this.choices.add(option);
-	
-	   }
-    }
-    catch(Exception e){
-        //catch error from user, recall create
-        System.out.println("Please enter a valid number of choices.");
-        create();
-    }
+        System.out.println("\nHow many answers to your questiion.");
+        this.number = keyboard.nextInt();
+            
+        }
+        catch(Exception e){
+         create();
+        }
 
 	}
 
@@ -103,6 +109,7 @@ public class MultipleChoice extends Question implements Serializable {
      * gets the prompt from user and answer to enter correct info.
      */
      public void createAnswer(){
+
         int count = 1;
         String resp;
         Scanner keyboard = new Scanner(System.in);
@@ -130,7 +137,7 @@ public class MultipleChoice extends Question implements Serializable {
      */
     public void display(){
 
-        System.out.println(getPrompt() + "\n");
+        System.out.println(getPrompt());
         int count = 1;
 
         //for each choice, print choice increase counter.
@@ -159,7 +166,6 @@ public class MultipleChoice extends Question implements Serializable {
 
         System.out.print("\nEnter choice: ");
         try{
-            
             number = keyboard.nextInt();
             keyboard.nextLine();
             newChoice = keyboard.nextLine();
@@ -183,13 +189,26 @@ public class MultipleChoice extends Question implements Serializable {
         Scanner keyboard = new Scanner(System.in);
         Answers responce = new Answers();
         String resp;
+        char letter = 'A';
+        if(this.number > 1){
 
-        resp = keyboard.nextLine();
+            System.out.println("");
 
-        responce.setAnswer(resp);
+            for(int index = 0; index < this.number; index ++){
+            System.out.print(letter + ".) ");
+            resp = keyboard.nextLine();
+            responce.setAnswer(resp);
+            letter++;
+            }
+        }
+        else{
+
+            resp = keyboard.nextLine();
+            responce.setAnswer(resp);
+        }
 
         return responce;
 
-    }
+        }
 
 }
