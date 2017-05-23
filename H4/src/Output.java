@@ -17,11 +17,18 @@ public abstract class Output implements Serializable{
 	}
 
 	public static Output getOutput(){
+		System.out.println(type);
 
 		if(type.equals("Console")){
 
 			return Console.getOutput();
 		}
-		return Console.getOutput();
+		else if(type.equals("FreeTTS")){
+			return FreeTTS.getOutput();
+		}
+		else{
+
+		return FreeTTS.getOutput();
+		}
 	}
 }

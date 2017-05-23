@@ -16,7 +16,7 @@ public class Main implements Serializable{
      */
 	public static void main(String[] args) throws IOException, ClassNotFoundException{
 
-	Output.setOutput("Console");
+	Output.setOutput("FreeTTS");
 	Output out = Output.getOutput();
 
 

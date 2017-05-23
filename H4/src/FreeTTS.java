@@ -6,7 +6,7 @@ import java.io.Serializable;
 
 
 
-public class FreeTTS extends Output extends {
+public class FreeTTS extends Output implements Serializable{
 
 	private static final double serialVersionUID = -1L;
 	private String voiceName = "kevin16";

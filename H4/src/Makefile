@@ -1,7 +1,5 @@
 #Joseph Mulray H2 Makefile
 
-#export CLASSPATH=$CLASSPATH:./../libs/freetts.jar
-
 #variable declaration
 JAVA = java
 JAR = jar
@@ -24,7 +22,8 @@ FILES = Answers.java \
 	TF.java \
 	Main.java \
 	Output.java \
-	Console.java 
+	Console.java \
+	FreeTTS.java 
 	
 
 #main jar file used.
