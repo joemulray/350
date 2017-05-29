@@ -4,31 +4,27 @@ import java.io.Serializable;
 public abstract class Output implements Serializable{
 
 	private static final double serialVersionUID = -1L;
-	private static String type = "";
+	protected static String out = "";
 
 	public Output(){}
 
+	//abstract method for subclasses
 	public abstract void print(String text);
 
 
-
-	public static void setOutput(String type){
-			type = type;
+	public static void setOutput(String opt){
+		//set variable to output
+			out = opt;
 	}
 
 	public static Output getOutput(){
-		System.out.println(type);
 
-		if(type.equals("Console")){
-
-			return Console.getOutput();
-		}
-		else if(type.equals("FreeTTS")){
+		//check output and return object
+		if(out.equals("FreeTTS")){
 			return FreeTTS.getOutput();
 		}
 		else{
-
-		return FreeTTS.getOutput();
+			return Console.getOutput();
 		}
 	}
 }

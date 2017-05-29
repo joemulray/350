@@ -32,13 +32,13 @@ public class Test extends Survey  implements Serializable{
     Scanner keyboard = new Scanner(System.in);
     String choice;
 
-    out.print("\n1) Add a new T/F question");
-    out.print("2) Add a new multiple choice");
-    out.print("3) Add a new short answer question");
-    out.print("4) Add a new essay question");
-    out.print("5) Add a new ranking question");
-    out.print("6) Add a new matching question");
-    out.print("7) Quit");
+    out.print("\n1) Add a new T/F question" +
+    "\n2) Add a new multiple choice" +
+    "\n3) Add a new short answer question" +
+    "\n4) Add a new essay question" +
+    "\n5) Add a new ranking question" +
+    "\n6) Add a new matching question" +
+    "\n7) Quit");
 
     choice = keyboard.nextLine();
 

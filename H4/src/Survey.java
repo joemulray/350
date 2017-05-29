@@ -32,13 +32,13 @@ public class Survey extends Start implements Serializable {
 
 
     //display menu 3
-    System.out.println("\n1) Add a new T/F question");
-    System.out.println("2) Add a new multiple choice");
-    System.out.println("3) Add a new short answer question");
-    System.out.println("4) Add a new essay question");
-    System.out.println("5) Add a new ranking question");
-    System.out.println("6) Add a new matching question");
-    System.out.println("7) Quit");
+    out.print("\n1) Add a new T/F question" + 
+    "\n2) Add a new multiple choice" +
+    "\n3) Add a new short answer question" +
+    "\n4) Add a new essay question" +
+    "\n5) Add a new ranking question" +
+    "\n6) Add a new matching question" +
+    "\n7) Quit");
 
     choice = keyboard.nextLine();
 
@@ -115,7 +115,7 @@ public class Survey extends Start implements Serializable {
         }
 
 
-        System.out.println("\nHow many Questions would you like to have in for your "
+        out.print("\nHow many Questions would you like to have in for your "
             + this.type + "?");
 
         //for each question call addQuestion
@@ -128,13 +128,12 @@ public class Survey extends Start implements Serializable {
             }
 
             //notify user
-            System.out.println("\n" + this.type + " Created.");
+            out.print("\n" + this.type + " Created.");
             }
 
         catch(Exception e){
             //handle misinputted infomation
-            System.out.println(e);
-            System.out.println("Please enter a valid number of questions.");
+            out.print("Please enter a valid number of questions.");
             create();
         }
     }
@@ -146,7 +145,7 @@ public class Survey extends Start implements Serializable {
 
     public void setName(){
         Scanner keyboard = new Scanner(System.in);
-        System.out.print("\nEnter name for " + this.type + ": ");
+        out.print("\nEnter name for " + this.type + ": ");
         this.name = keyboard.nextLine();
     }
 
@@ -154,7 +153,7 @@ public class Survey extends Start implements Serializable {
 
     
     public void exit(){
-        System.out.println("Exiting....");
+        out.print("Exiting....");
         System.exit(0);
     }
 
@@ -169,11 +168,11 @@ public class Survey extends Start implements Serializable {
         for (Question question: Questions) {
 
             //keep count of question numbers
-            System.out.println(count + ")");
+            out.print(count + ")");
             question.display();
             
             count ++;
-            System.out.println("\n");
+            out.print("\n");
         }
 
     }
@@ -190,14 +189,14 @@ public class Survey extends Start implements Serializable {
 
 
             Question editQ = this.Questions.get(number -1);
-            System.out.println("Do you wish to modify the prompt? ");
+            out.print("Do you wish to modify the prompt? ");
             option = keyboard.nextLine();
 
 
             if(option.equalsIgnoreCase("y") || option.equalsIgnoreCase("yes") ){
-                System.out.println(editQ.getPrompt());
+                out.print(editQ.getPrompt());
 
-                System.out.println("Enter a new prompt: ");
+                out.print("Enter a new prompt: ");
                 newPrompt = keyboard.nextLine();
 
                 editQ.setPrompt(newPrompt);
@@ -206,7 +205,7 @@ public class Survey extends Start implements Serializable {
 
             //if question is multiple choice prompt modify the choices
             if(editQ.getSelf().equals("MultipleChoice")){
-            System.out.println("\nDo you wish to modify the choices? ");
+            out.print("\nDo you wish to modify the choices? ");
                 option = keyboard.nextLine();
 
             if(option.equalsIgnoreCase("y") || option.equalsIgnoreCase("yes") ){
@@ -218,7 +217,7 @@ public class Survey extends Start implements Serializable {
 
             //if the type is a test. prompt change correct answer.
             if(this.type.equals("Test")){
-                System.out.println("\nDo you wish to modify the correct answer? ");
+                out.print("\nDo you wish to modify the correct answer? ");
                     option = keyboard.nextLine();
 
             if(option.equalsIgnoreCase("y") || option.equalsIgnoreCase("yes") ){
@@ -243,7 +242,7 @@ public class Survey extends Start implements Serializable {
         Scanner keyboard = new Scanner(System.in);
         int count = 1;
         Answers responce;
-        System.out.println("\n");
+        out.print("\n");
 
 
         //for each question get answer
@@ -251,7 +250,7 @@ public class Survey extends Start implements Serializable {
 
             //creating variables for new questions
 
-            System.out.println(count + ")");
+            out.print(count + ")");
             responce = question.takeAnswer();    
     
 
@@ -259,7 +258,7 @@ public class Survey extends Start implements Serializable {
             userAnswer.add(responce);
 
 
-            System.out.println("\n");
+            out.print("\n");
             count ++; 
 
         }
@@ -275,20 +274,20 @@ public class Survey extends Start implements Serializable {
 
             //if there are no responces, just return
             if(allTaken.size() == 0){
-                System.out.println("\nNo responces for this Test.");
+                out.print("\nNo responces for this Test.");
                 return;
             }
 
             displayName();
             //print number of responces taken for the test or survey
-            System.out.println("NUMBER OF RESPONCES: " + allTaken.size() + "\n");
+            out.print("NUMBER OF RESPONCES: " + allTaken.size() + "\n");
             int count = 1;
             //for each question in the SOT
             for(int index = 0; index < Questions.size(); index++){  
 
-                System.out.println(count + ".) ");
+                out.print(count + ".) ");
                 Questions.get(index).display();
-                System.out.println("");
+                out.print("");
             
                 //use hashmap to store answers as key and int as number of appearances.
                 HashMap<List<String>, Integer> hmap = new HashMap<List<String>, Integer>(); 
@@ -319,12 +318,12 @@ public class Survey extends Start implements Serializable {
                   Integer value = entry.getValue();
 
                   //display the keys and values
-                  System.out.print(" " + key + " ");
-                  System.out.println(": " + value);
+                  out.print(" " + key + " " + 
+                  ": " + value);
 
                 }
 
-                System.out.println("\n");
+                out.print("\n");
                 count++;
 
             }
@@ -336,11 +335,7 @@ public class Survey extends Start implements Serializable {
         * Function to displayName
         */
         public void displayName(){
-
-        System.out.println("\n=========================================");
-        System.out.println("           " +this.type + " : " +  this.name);
-        System.out.println("=========================================\n");
-
+        out.print("\n           " +this.type + " : " +  this.name);
         }
 
 

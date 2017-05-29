@@ -1,2 +1,2 @@
 Main-Class: Main
-
+Class-path: ./../libs/'*'

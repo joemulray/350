@@ -4,7 +4,7 @@ import java.io.Serializable;
 /**
  * 
  */
-public abstract class Question implements Serializable {
+public abstract class Question extends Survey implements Serializable{
 
     /**
      * attributes needed for 
@@ -12,11 +12,11 @@ public abstract class Question implements Serializable {
      */
 
     private static final double serialVersionUID = -1L;
+    //public transient Output out = Output.getOutput();
     protected String prompt;
     protected String type;
     protected String self;
     protected Answers answer;
-    public Output out = Output.getOutput();
 
     /**
      * Default constructor

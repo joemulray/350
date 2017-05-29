@@ -38,16 +38,16 @@ public class Ranking extends Matching implements Serializable {
 	Scanner keyboard = new Scanner(System.in);
 	
     //get prompt from user
-	System.out.println("\nEnter the prompt or your ranking question:");
+	out.print("\nEnter the prompt or your ranking question:");
 	this.prompt = keyboard.nextLine();
 	   
     //get number of choices from user
-	System.out.println("\nEnter the number of choices for your ranking question:");
+	out.print("\nEnter the number of choices for your ranking question:");
     try{
 	this.numChoices = keyboard.nextInt();
 	}
     catch(Exception e){
-        System.out.println("Please select a valid option.");
+        out.print("Please select a valid option.");
         create();
     }
 	keyboard.nextLine();	
@@ -56,7 +56,7 @@ public class Ranking extends Matching implements Serializable {
 	for(int index = 1; index <= numChoices; index++){
 
 		String option;
-		System.out.println("Enter choice #" + index + ": ");
+		out.print("Enter choice #" + index + ": ");
 		option = keyboard.nextLine();
 		
 		this.choices.add(option);
@@ -78,13 +78,13 @@ public class Ranking extends Matching implements Serializable {
         Answers answer = new Answers();
         int count = 1;
 
-        System.out.println("\nEnter the correct Answer for your Ranking Question?:");
+        out.print("\nEnter the correct Answer for your Ranking Question?:");
 
-        System.out.println("Total Ranking Choices: " + this.getChoices().size());
+        out.print("Total Ranking Choices: " + this.getChoices().size());
 
         //for each choice, get an answer for ranking quesitons each choice needs an answer.
         for(String choice : this.getChoices()){
-            System.out.println(count + ": " + choice);
+            out.print(count + ": " + choice);
             resp = keyboard.nextLine(); 
             answer.setAnswer(resp);
             count ++;
@@ -102,9 +102,9 @@ public class Ranking extends Matching implements Serializable {
 
         char letter = 'A';
 
-        System.out.println(getPrompt());
+        out.print(getPrompt());
         for(String choice : getChoices()){
-            System.out.println(" " + letter + ".) " + choice);
+            out.print(" " + letter + ".) " + choice);
             letter++;
         }
     }
@@ -125,9 +125,9 @@ public class Ranking extends Matching implements Serializable {
         String resp;
 
         //for each choice get answer from user
-        System.out.println("");
+        out.print("");
         for(String choice : this.getChoices()){
-            System.out.print(letter + ".) " + choice + " : ");
+            out.print(letter + ".) " + choice + " : ");
             resp = keyboard.nextLine(); 
             responce.setAnswer(resp);
             letter ++;

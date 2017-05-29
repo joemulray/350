@@ -57,7 +57,7 @@ public class Essay extends Question implements Serializable {
         this.length = keyboard.nextLine();
 
         //get number of answers from user.
-        out.print("How many answers to your questiion.");
+        out.print("How many answers to your question.");
         try{
             this.number = keyboard.nextInt();
             while(this.number < 0){

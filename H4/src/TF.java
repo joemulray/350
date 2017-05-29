@@ -26,7 +26,7 @@ public class TF extends MultipleChoice implements Serializable {
 
 
 	out.print("\nEnter your prompt or True False Question:");
-	prompt = keyboard.nextLine();
+	this.prompt = keyboard.nextLine();
 
     //add only two available choices to list already know two choices.
     this.choices.add("T");
@@ -67,7 +67,7 @@ public class TF extends MultipleChoice implements Serializable {
         out.print(getPrompt());
         int count = 1;
         for (String choice: getChoices()) {
-            System.out.print(" "+count + "). " + choice +"\n");
+            out.print(" "+count + "). " + choice +"\n");
             count++;
         }
     }

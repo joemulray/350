@@ -4,7 +4,7 @@ import java.io.Serializable;
 /**
  * 
  */
-public class Answers implements Serializable{
+public class Answers extends Test implements Serializable{
 
     /**
      * Variables to hold answer contents
@@ -12,7 +12,6 @@ public class Answers implements Serializable{
      */
     private List<String> answer = new ArrayList<String>();
     private static final double serialVersionUID = -1L;
-    public Output out = Output.getOutput();
     /**
      * Default constructor
      */

@@ -1,12 +1,15 @@
-#Joseph Mulray H2 Makefile
+#Joseph Mulray H4 Makefile
 
 #variable declaration
 JAVA = java
 JAR = jar
 JC = javac
-FLAGS = cfm
+FLAGS = cp
 VIEWER = more
 DOCS = javadoc
+
+#Path to Libraries
+LIB = ./../libs/'*'
 
 #files used in this project
 FILES = Answers.java \
@@ -26,17 +29,16 @@ FILES = Answers.java \
 	FreeTTS.java 
 	
 
-#main jar file used.
-MAIN = H4.jar
+#main file used.
+MAIN = Main
 
 
 .PHONY: run view clean
 
 #run and execute program
-run:
-	@$(JC) $(FILES)
-	@$(JAR) -$(FLAGS) $(MAIN) Manifest.txt *.class
-	$(JAVA) -$(JAR) $(MAIN)
+run:	
+	@$(JC) -$(FLAGS) $(LIB): $(FILES)
+	$(JAVA) -$(FLAGS) $(LIB): $(MAIN)
 
 
 #view source code
@@ -61,6 +63,6 @@ remove:
 
 #clean directory 
 clean:
-	@rm *.class $(MAIN)
+	@rm *.class
 	@echo Done.
 

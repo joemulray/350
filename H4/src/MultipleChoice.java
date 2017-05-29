@@ -85,7 +85,7 @@ public class MultipleChoice extends Question implements Serializable {
     		this.choices.add(option);
     	   }
 
-        out.print("\nHow many answers to your questiion.");
+        out.print("\nHow many answers to your question.");
         this.number = keyboard.nextInt();
             
         }
@@ -127,7 +127,7 @@ public class MultipleChoice extends Question implements Serializable {
         out.print("");
         if(number > 1){
             for(int index = 0; index < number ; index ++){
-            System.out.print(letter + ".) ");
+            out.print(letter + ".) ");
             resp = keyboard.nextLine();
             answer.setAnswer(resp);
             letter ++;
@@ -153,7 +153,7 @@ public class MultipleChoice extends Question implements Serializable {
 
         //for each choice, print choice increase counter.
         for (String choice: getChoices()) {
-            System.out.print(" " + count + "). " + choice);
+            out.print(" " + count + "). " + choice);
             count++;
         }
 
@@ -173,11 +173,11 @@ public class MultipleChoice extends Question implements Serializable {
 
         //for each choice, print choice increase counter.
         for (String choice: getChoices()) {
-            System.out.print(" " + count + "). " + choice);
+            out.print(" " + count + "). " + choice);
             count++;
         }
 
-        System.out.print("\nEnter choice: ");
+        out.print("\nEnter choice: ");
         try{
             //try to get user input
             number = keyboard.nextInt();
@@ -214,7 +214,7 @@ public class MultipleChoice extends Question implements Serializable {
             out.print("");
             //for each number of answers get input
             for(int index = 0; index < this.number; index ++){
-            System.out.print(letter + ".) ");
+            out.print(letter + ".) ");
             resp = keyboard.nextLine();
             responce.setAnswer(resp);
             letter++;

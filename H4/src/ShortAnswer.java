@@ -26,20 +26,20 @@ public class ShortAnswer extends Essay implements Serializable {
 
         //get prompt from user along with length requirements.
         Scanner keyboard = new Scanner(System.in);
-        System.out.println("\nEnter prompt or your Short Answer question:");
+        out.print("\nEnter prompt or your Short Answer question:");
         this.prompt = keyboard.nextLine();
 
         //gets length from user
-        System.out.println("Enter Short Answer Length:");
+        out.print("Enter Short Answer Length:");
         this.length = keyboard.nextLine();
 
 
         //get input from user on number of quesitons
-        System.out.println("How many answers to your questiion.");
+        out.print("How many answers to your questiion.");
         try{
             this.number = keyboard.nextInt();
             while(this.number < 0){
-                System.out.println("Please enter a valid number of choices.");
+                out.print("Please enter a valid number of choices.");
                 this.number = keyboard.nextInt();
             }
         }
@@ -62,7 +62,7 @@ public class ShortAnswer extends Essay implements Serializable {
         Answers answer = new Answers();
 
         //short answer needs grading no input on asnwer
-        System.out.println("\nShort Answer Questions will require Grading.");
+        out.print("\nShort Answer Questions will require Grading.");
 
         this.answer = answer;
     }
@@ -74,8 +74,8 @@ public class ShortAnswer extends Essay implements Serializable {
      */
     @Override
     public void display() {
-        System.out.println(getPrompt());
-        System.out.println("Length: " + getLength() + "\n");
+        out.print(getPrompt());
+        out.print("Length: " + getLength() + "\n");
     }
 
 }

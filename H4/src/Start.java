@@ -3,7 +3,7 @@ import java.io.*;
 /**
  * 
  */
-public class Start implements Serializable {
+public class Start extends Main implements Serializable{
 
     /**
      * attributes used for start class
@@ -13,7 +13,6 @@ public class Start implements Serializable {
     private Survey SOT;
     private String path = "./../ser/";
     Survey current;
-    public Output out = Output.getOutput();
 
 
     /**
@@ -72,14 +71,14 @@ public class Start implements Serializable {
             Scanner keyboard = new Scanner(System.in);
 
             //display second menu option
-            out.print("\n1) Create a new survey");
-            out.print("2) Display a Survey");
-            out.print("3) Load a Survey");
-            out.print("4) Save a Survey");
-            out.print("5) Modify an Existing Survey");
-            out.print("6) Take a Survey");
-            out.print("7) Tabulate a Survey");
-            out.print("8) Quit");
+            out.print("\n1) Create a new survey" +
+            "\n2) Display a Survey" + 
+            "\n3) Load a Survey" +
+            "\n4) Save a Survey" + 
+            "\n5) Modify an Existing Survey" + 
+            "\n6) Take a Survey" +
+            "\n7) Tabulate a Survey" +
+            "\n8) Quit");
 
             option = keyboard.nextLine();
 
@@ -130,15 +129,15 @@ public class Start implements Serializable {
             String option;
             Scanner keyboard = new Scanner(System.in);
 
-            out.print("\n1) Create a new Test");
-            out.print("2) Display a Test");
-            out.print("3) Load a Test");
-            out.print("4) Save a Test");
-            out.print("5) Modify an Existing Test");
-            out.print("6) Take a Test");
-            out.print("7) Tabulate a Test");
-            out.print("8) Grade a Test");
-            out.print("9) Quit");
+            out.print("\n1) Create a new Test" +
+            "\n2) Display a Test" +
+            "\n3) Load a Test" + 
+            "\n4) Save a Test" + 
+            "\n5) Modify an Existing Test" +
+            "\n6) Take a Test" +
+            "\n7) Tabulate a Test" +
+            "\n8) Grade a Test" +
+            "\n9) Quit");
 
             option = keyboard.nextLine(); 
 
@@ -229,9 +228,9 @@ public class Start implements Serializable {
             try {
                 //create output stream for serialization
                 FileOutputStream fileOut = new FileOutputStream(this.path + this.current.getType() + "/" + this.current.getName() + ".ser");
-                ObjectOutputStream outs = new ObjectOutputStream(fileOut);
-                outs.writeObject(this.current);
-                outs.close();
+                ObjectOutputStream objOutStream = new ObjectOutputStream(fileOut);
+                objOutStream.writeObject(this.current);
+                objOutStream.close();
                 fileOut.close();
 
                 //write the objects notify user.
@@ -294,7 +293,7 @@ public class Start implements Serializable {
 
         //if no files are in folder 
         if (listOfFiles.length == 0) {
-            System.out.print("\nNo input files found. ");
+            out.print("\nNo input files found. ");
             return null;
         }
 
@@ -485,8 +484,10 @@ public class Start implements Serializable {
         return ;
     }
 
+    display();
+
     out.print("\nWhat question do you wish to modify?");
-    System.out.print("Enter existing question: ");
+    out.print("Enter existing question: ");
 
         //handling invalid input
         try{
@@ -494,7 +495,7 @@ public class Start implements Serializable {
             this.current.editQuestion(number);
         }
         catch(Exception e){
-            System.out.print("Enter existing question: ");
+            out.print("Enter existing question: ");
             number = keyboard.nextInt();
             this.current.editQuestion(number);
         }

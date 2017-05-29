@@ -5,7 +5,7 @@ import java.io.Serializable;
 public class Main implements Serializable{
 
 	private static final double serialVersionUID = -1L;
-	
+	public transient static Output out;
 
 
     /**
@@ -17,15 +17,14 @@ public class Main implements Serializable{
 	public static void main(String[] args) throws IOException, ClassNotFoundException{
 
 	Output.setOutput("FreeTTS");
-	Output out = Output.getOutput();
+	out = Output.getOutput();
 
 
-	out.print("\n=========================================");
 	out.print("|                WELCOME                |");
-    out.print("=========================================\n");
 
     Start start = new Start();
     int option = start.menu();
+    
 	while(true){
 		if(option == 1)
 			start.surveyMenu();
