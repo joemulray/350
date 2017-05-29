@@ -1,0 +1,7 @@
+Joseph Mulray
+Lab 4: JUnit
+
+Two files included are the MergeSort.java main class and the SimpleTests.java which is the JUnit test cases.
+Ran the test cases, passed 2/2 times. Also had a difficult time creating a makefile for this lab, tried creating one but could not
+compile files for the junit library even after specifying classpath and so on.
+
